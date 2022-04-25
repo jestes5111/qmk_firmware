@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_CAPS, KC_NO,   KC_NO,   KC_NO,   SPOTIFY, KC_WHOM, KC_NO,            CSFT,    KC_NO,   KC_NO,   KC_NO,   KC_PGUP, KC_PGDN, KC_END,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_NO,   KC_NO,   KC_NO,                     KC_UNDS, KC_LOCK,    KC_NO
+                                    KC_NO,   KC_NO,   KC_NO,                     KC_UNDS, KC_LOCK, KC_NO
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_FUNC] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_NUM,  KC_PSLS, KC_PAST, KC_PMNS, KC_NO,   KC_BSPC,
+     KC_ESC,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_NUM,  KC_PSLS, KC_PAST, KC_PMNS, KC_NO,   KC_BSPC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      QWERTY,  KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_BTN3,                            KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_NO,   KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
