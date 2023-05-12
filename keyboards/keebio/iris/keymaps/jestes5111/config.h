@@ -22,9 +22,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_SLEEP
 #define ENABLE_COMPILE_KEYCODE
 
-#define TAPPING_TERM 175
+#define UNICODE_SELECTED_MODES UNICODE_MODE_WINCOMPOSE
+
+#define TAPPING_TERM 180
+#define TAPPING_TERM_PER_KEY
 #define IGNORE_MOD_TAP_INTERRUPT
-#define QUICK_TAP_TERM 120
+#define QUICK_TAP_TERM 140
 // #define RETRO_TAPPING
 
 // Saving space
