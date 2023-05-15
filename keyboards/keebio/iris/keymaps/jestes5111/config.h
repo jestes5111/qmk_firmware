@@ -24,11 +24,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define UNICODE_SELECTED_MODES UNICODE_MODE_WINCOMPOSE
 
-#define TAPPING_TERM 180
-#define TAPPING_TERM_PER_KEY
 #define IGNORE_MOD_TAP_INTERRUPT
-#define QUICK_TAP_TERM 140
-// #define RETRO_TAPPING
+#define TAPPING_TERM 185
+#define TAPPING_TERM_PER_KEY
+#define QUICK_TAP_TERM 15
+#define PERMISSIVE_HOLD
 
 // Saving space
 #define NO_ACTION_ONESHOT
