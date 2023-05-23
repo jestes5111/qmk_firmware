@@ -18,6 +18,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // TODO: try to implement smart case
 //    - combo? (i.e., ctrl + cw_togg = snake_case)
+//    - custom keycode with modifier support (i.e., dedicated keys) (have on both sides of keyboard in same positions)
+//      - example: {key to right of A} = snake_case, shift + {key to right of A} = SCREAMING_SNAKE_CASE,
+//                 ctrl + {key to right of A} = camelCase, alt + {key to right of A} = PascalCase,
+//                 etc.
 
 // Home-row mods
 #define A_GUI LGUI_T(KC_A)
@@ -34,7 +38,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SPC_MOUSE LT(_MOUSE, KC_SPC)
 #define BSPC_SYM LT(_SYM, KC_BSPC)
 #define ENT_NUM LT(_NUM, KC_ENT)
-#define HOME_PASTA LT(_PASTA, KC_HOME)
+#define HOME_UNI LT(_UNI, KC_HOME)
 #define END_FUNC LT(_FUNC, KC_END)
 
 enum layers {
@@ -44,7 +48,7 @@ enum layers {
     _SYM,
     _MOUSE,
     _NUM,
-    _PASTA,
+    _UNI,
     _FUNC,
 };
 
@@ -58,6 +62,7 @@ enum unicode_names {
     THMB_U,
     THMB_D,
     MOYAI,
+    GOAT,
 };
 
 const uint32_t unicode_map[] PROGMEM = {
@@ -66,12 +71,13 @@ const uint32_t unicode_map[] PROGMEM = {
     [THMB_U] = 0x1F44D, // 👍
     [THMB_D] = 0x1F44E, // 👎
     [MOYAI] = 0x1F5FF, // 🗿
+    [GOAT] = 0x1F98C, // 🦌
 };
 
 const key_override_t **key_overrides = (const key_override_t *[]) {
 	&ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL),
 	&ko_make_basic(MOD_MASK_SHIFT, BSPC_SYM, KC_DEL),
-	&ko_make_basic(MOD_MASK_SHIFT, HOME_PASTA, KC_PGUP),
+	&ko_make_basic(MOD_MASK_SHIFT, HOME_UNI, KC_PGUP),
 	&ko_make_basic(MOD_MASK_SHIFT, END_FUNC, KC_PGDN),
 	NULL
 };
@@ -85,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_GRV,    A_GUI,     S_ALT,     D_CTL,     F_SFT,     KC_G,                                     KC_H,      J_SFT,     K_CTL,     L_ALT,     SCLN_GUI,  KC_QUOT,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        CW_TOGG,   KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      HOME_PASTA,         END_FUNC,  KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   CW_TOGG,
+        CW_TOGG,   KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      HOME_UNI,           END_FUNC,  KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   CW_TOGG,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               KC_TAB,    ESC_NAV,   SPC_MOUSE,                     ENT_NUM,   BSPC_SYM,  KC_TAB
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
@@ -161,13 +167,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
     ),
 
-    [_PASTA] = LAYOUT(
+    [_UNI] = LAYOUT(
     // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
         KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                    X(DSGS),   X(THMB_U), X(I_CIRC), KC_NO,     KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                    KC_NO,     X(THMB_D), KC_NO,     KC_NO,     KC_NO,     KC_NO,
+        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     X(GOAT),                                  KC_NO,     X(THMB_D), KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_TRNS,            KC_NO,     KC_NO,     X(MOYAI),  KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
@@ -252,7 +258,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         case _GAME:
             rgblight_sethsv_noeeprom(HSV_PURPLE);
             break;
-        case _PASTA:
+        case _UNI:
             rgblight_sethsv_noeeprom(HSV_ORANGE);
             break;
         case _NUM:
