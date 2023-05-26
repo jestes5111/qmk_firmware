@@ -33,8 +33,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENT_NUM LT(_NUM, KC_ENT)
 #define HOME_UNI LT(_UNI, KC_HOME)
 
+// Home-row mods (RSTHD)
+#define R_GUI LGUI_T(KC_R)
+#define S_ALT LALT_T(KC_S)
+#define T_CTL LCTL_T(KC_T)
+#define H_SFT LSFT_T(KC_H)
+#define N_SFT RSFT_T(KC_N)
+#define A_CTL RCTL_T(KC_A)
+#define I_ALT LALT_T(KC_I) // RALT (AltGr) causes issues with Unicode
+#define O_GUI RGUI_T(KC_O)
+
+// Layer taps (RSTHD)
+#define BSPC_NAV LT(_NAV, KC_BSPC)
+#define SPC_NUM LT(_NUM, KC_SPC)
+#define ENT_SYM LT(_SYM, KC_ENT)
+
 enum layers {
     _QWERTY,
+    _RSTHD,
     _GAME,
     _NAV,
     _SYM,
@@ -87,6 +103,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         CW_TOGG,   KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      HOME_UNI,           KC_END,    KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   CW_TOGG,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               KC_TAB,    ESC_NAV,   SPC_MOUSE,                     ENT_NUM,   BSPC_SYM,  KC_DEL
+    //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
+    ),
+
+    [_RSTHD] = LAYOUT(
+    // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
+        KC_GRV,    KC_7,      KC_8,      KC_9,      KC_0,      KC_5,                                     KC_6,      KC_1,      KC_2,      KC_3,      KC_4,      KC_BSLS,
+    // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        KC_TAB,    KC_J,      KC_C,      KC_Y,      KC_F,      KC_K,                                     KC_Z,      KC_L,      KC_COMM,   KC_U,      KC_Q,      KC_EQL,
+    // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        KC_UNDS,   R_GUI,     S_ALT,     T_CTL,     H_SFT,     KC_D,                                     KC_M,      N_SFT,     A_CTL,     I_ALT,     O_GUI,     KC_QUOT,
+    // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        CW_TOGG,   KC_SLSH,   KC_V,      KC_G,      KC_P,      KC_B,      HOME_UNI,           KC_END,    KC_X,      KC_W,      KC_DOT,    KC_SCLN,   KC_MINS,   CW_TOGG,
+    // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
+                                              KC_ESC,    BSPC_NAV,  KC_E,                          SPC_NUM,   ENT_SYM,   KC_DEL
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
     ),
 
@@ -148,7 +178,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NUM] = LAYOUT(
     // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
-        KC_NO,     KC_SLSH,   KC_CIRC,   KC_PERC,   KC_DLR,    TO(_NUM),                                TO(_QWERTY),KC_NO,     KC_NO,     KC_NO,     KC_NO,     TO(_GAME),
+        KC_NO,     KC_SLSH,   KC_CIRC,   KC_PERC,   KC_DLR,    TO(_NUM),                                TO(_QWERTY),TO(_RSTHD),KC_NO,     KC_NO,     KC_NO,     TO(_GAME),
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_NO,     KC_ASTR,   KC_7,      KC_8,      KC_9,      KC_EXLM,                                  KC_NO,     KC_NO,     KC_LBRC,   KC_RBRC,   KC_NO,     QK_BOOT,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
@@ -263,6 +293,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
+        case _RSTHD:
+            rgblight_sethsv_noeeprom(HSV_WHITE);
+            break;
         case _NAV:
             rgblight_sethsv_noeeprom(HSV_GREEN);
             break;
