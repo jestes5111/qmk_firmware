@@ -30,7 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define BSPC_NAV LT(_NAV, KC_BSPC)
 #define ENT_SYM LT(_SYM, KC_ENT)
 #define HOME_UNI LT(_UNI, KC_HOME)
-#define END_SYS LT(_SYS, KC_ENT)
+#define END_SYS LT(_SYS, KC_END)
 
 enum layers {
     _RSTHD,
