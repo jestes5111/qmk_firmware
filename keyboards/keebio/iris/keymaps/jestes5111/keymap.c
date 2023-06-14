@@ -29,8 +29,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Layer taps
 #define BSPC_NAV LT(_NAV, KC_BSPC)
 #define ENT_SYM LT(_SYM, KC_ENT)
-#define DEL_UNI LT(_UNI, KC_DEL)
-#define TAB_SYS LT(_SYS, KC_TAB)
+#define DEL_SYS LT(_SYS, KC_DEL)
+#define TAB_UNI LT(_UNI, KC_TAB)
 
 // Windows shortcuts
 #define TASKBAR_1 G(KC_1)
@@ -38,11 +38,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TASKBAR_3 G(KC_3)
 #define TASKBAR_4 G(KC_4)
 #define TASKBAR_5 G(KC_5)
-#define APP_1 HYPR(KC_1)
-#define APP_2 HYPR(KC_2)
-#define APP_3 HYPR(KC_3)
-#define APP_4 HYPR(KC_4)
-#define APP_5 HYPR(KC_5)
+#define APP_1 MEH(KC_1)
+#define APP_2 MEH(KC_2)
+#define APP_3 MEH(KC_3)
+#define APP_4 MEH(KC_4)
+#define APP_5 MEH(KC_5)
 #define FZ_1 LCAG(KC_1)
 #define FZ_2 LCAG(KC_2)
 #define FZ_3 LCAG(KC_3)
@@ -108,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         CW_TOGG,   KC_SLSH,   KC_V,      KC_G,      KC_P,      KC_B,      QK_REP,             QK_REP,    KC_X,      KC_W,      KC_DOT,    KC_SCLN,   KC_MINS,   CW_TOGG,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
-                                              DEL_UNI,   BSPC_NAV,  KC_SPC,                        KC_E,      ENT_SYM,   TAB_SYS
+                                              DEL_SYS,   BSPC_NAV,  KC_SPC,                        KC_E,      ENT_SYM,   TAB_UNI
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
     ),
 
@@ -179,7 +179,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_LSFT,   KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_LALT,            KC_NO,     KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_LSFT,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
-                                             MO(_GAME2), SH_MON,    KC_SPC,                        KC_NO,     KC_TRNS,   KC_NO
+                                             MO(_GAME2), SH_MON,    KC_SPC,                        KC_NO,     KC_TRNS,   KC_RCTL
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
     ),
 
