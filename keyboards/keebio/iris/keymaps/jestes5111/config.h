@@ -33,6 +33,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Saving space
 #define NO_ACTION_ONESHOT
+#define NO_ALT_REPEAT_KEY
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
 #undef RGBLIGHT_ANIMATIONS

@@ -29,8 +29,37 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Layer taps
 #define BSPC_NAV LT(_NAV, KC_BSPC)
 #define ENT_SYM LT(_SYM, KC_ENT)
-#define HOME_UNI LT(_UNI, KC_HOME)
-#define END_SYS LT(_SYS, KC_END)
+#define DEL_UNI LT(_UNI, KC_DEL)
+#define TAB_SYS LT(_SYS, KC_TAB)
+
+// Windows shortcuts
+#define TASKBAR_1 G(KC_1)
+#define TASKBAR_2 G(KC_2)
+#define TASKBAR_3 G(KC_3)
+#define TASKBAR_4 G(KC_4)
+#define TASKBAR_5 G(KC_5)
+#define APP_1 HYPR(KC_1)
+#define APP_2 HYPR(KC_2)
+#define APP_3 HYPR(KC_3)
+#define APP_4 HYPR(KC_4)
+#define APP_5 HYPR(KC_5)
+#define FZ_1 LCAG(KC_1)
+#define FZ_2 LCAG(KC_2)
+#define FZ_3 LCAG(KC_3)
+#define FZ_4 LCAG(KC_4)
+#define WINDOW_L G(KC_LEFT)
+#define WINDOW_D G(KC_DOWN)
+#define WINDOW_U G(KC_UP)
+#define WINDOW_R G(KC_RGHT)
+#define SELECT_L RCS(KC_LEFT)
+#define SELECT_D RCS(KC_DOWN)
+#define SELECT_U RCS(KC_UP)
+#define SELECT_R RCS(KC_RGHT)
+#define SNIP_TOOL LSG(KC_S)
+#define DR_TOGG LSA(KC_D)
+#define BW_FILL RCS(KC_L)
+#define NEXT_TAB C(KC_TAB)
+#define PREV_TAB RCS(KC_TAB)
 
 enum layers {
     _RSTHD,
@@ -77,23 +106,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_UNDS,   R_GUI,     S_ALT,     T_CTL,     H_SFT,     KC_D,                                     KC_M,      N_SFT,     A_CTL,     I_ALT,     O_GUI,     KC_QUOT,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        CW_TOGG,   KC_SLSH,   KC_V,      KC_G,      KC_P,      KC_B,      HOME_UNI,           END_SYS,   KC_X,      KC_W,      KC_DOT,    KC_SCLN,   KC_MINS,   CW_TOGG,
+        CW_TOGG,   KC_SLSH,   KC_V,      KC_G,      KC_P,      KC_B,      QK_REP,             QK_REP,    KC_X,      KC_W,      KC_DOT,    KC_SCLN,   KC_MINS,   CW_TOGG,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
-                                              KC_DEL,    BSPC_NAV,  KC_SPC,                        KC_E,      ENT_SYM,   KC_TAB
+                                              DEL_UNI,   BSPC_NAV,  KC_SPC,                        KC_E,      ENT_SYM,   TAB_SYS
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
     ),
 
     [_NAV] = LAYOUT(
     // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
-        KC_MPLY,   KC_MPRV,   KC_MNXT,   KC_VOLD,   KC_VOLU,   KC_MUTE,                                  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+        KC_MPLY,   KC_MPRV,   KC_MNXT,   KC_VOLD,   KC_VOLU,   KC_MUTE,                                  KC_WBAK,   PREV_TAB,  NEXT_TAB,  KC_WFWD,   KC_WREF,   KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_ESC,    MEH(KC_Q), MEH(KC_W), MEH(KC_E), MEH(KC_R), MEH(KC_T),                                G(KC_LEFT),G(KC_DOWN),G(KC_UP),  G(KC_RGHT),KC_NO,     KC_NO,
+        KC_ESC,    APP_1,     APP_2,     APP_3,     APP_4,     APP_5,                                    KC_HOME,   KC_PGDN,   KC_PGUP,   KC_END,    KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        ALT_TAB,   MEH(KC_A), MEH(KC_S), MEH(KC_D), MEH(KC_F), MEH(KC_G),                                KC_LEFT,   KC_DOWN,   KC_UP,     KC_RGHT,   KC_NO,     KC_NO,
+        ALT_TAB,   TASKBAR_1, TASKBAR_2, TASKBAR_3, TASKBAR_4, TASKBAR_5,                                KC_LEFT,   KC_DOWN,   KC_UP,     KC_RGHT,   KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_CAPS,   LCAG(KC_1),LCAG(KC_2),LCAG(KC_3),LCAG(KC_4),KC_WHOM,   KC_NO,              KC_LCTL,   S(KC_LEFT),S(KC_DOWN),S(KC_UP),  S(KC_RGHT),KC_NO,     KC_CAPS,
+        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,              KC_NO,     SELECT_L,  SELECT_D,  SELECT_U,  SELECT_R,  KC_NO,     KC_NO,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
-                                              KC_NO,     KC_TRNS,   KC_NO,                         KC_NO,     KC_ENT,    KC_NO
+                                              KC_NO,     KC_TRNS,   KC_NO,                         KC_NO,     KC_ENT,    KC_TAB
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
     ),
 
@@ -130,11 +159,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
         KC_F12,    KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_F5,                                    KC_F6,     KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F11,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     QK_BOOT,
+        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                    FZ_1,      FZ_2,      FZ_3,      FZ_4,      KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_NO,     LSG(KC_S), KC_NO,     KC_NO,     KC_NO,                                    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     QK_MAKE,
+        KC_APP,    KC_NO,     SNIP_TOOL, BW_FILL,   DR_TOGG,   KC_NO,                                    WINDOW_L,  WINDOW_D,  WINDOW_U,  WINDOW_R,  KC_NO,     QK_MAKE,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,              KC_TRNS,   KC_NO,     KC_NO,     KC_NO,     KC_NO,    TO(_RSTHD),TO(_GAME1),
+        KC_CAPS,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,              KC_TRNS,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    TO(_GAME1),
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               KC_NO,     KC_NO,     KC_NO,                         KC_NO,     KC_NO,     KC_NO
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
@@ -148,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_LCTL,   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,                                     KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   KC_LCTL,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_LSFT,   KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_LALT,            KC_LALT,   KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_LSFT,
+        KC_LSFT,   KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_LALT,            KC_NO,     KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   KC_LSFT,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                              MO(_GAME2), SH_MON,    KC_SPC,                        KC_NO,     KC_TRNS,   KC_NO
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘

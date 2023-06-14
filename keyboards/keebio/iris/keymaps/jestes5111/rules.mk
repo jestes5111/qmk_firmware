@@ -13,11 +13,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-MOUSEKEY_ENABLE = no
 CAPS_WORD_ENABLE = yes
 UNICODEMAP_ENABLE = yes
-KEY_OVERRIDE_ENABLE = no
-SLEEP_LED_ENABLE = no
+REPEAT_KEY_ENABLE = yes
 
 # Saving space
 BACKLIGHT_ENABLE = no
@@ -25,3 +23,6 @@ ENCODER_ENABLE = no
 SPACE_CADET_ENABLE = no
 GRAVE_ESC_ENABLE = no
 MAGIC_ENABLE = no
+MOUSEKEY_ENABLE = no
+KEY_OVERRIDE_ENABLE = no
+SLEEP_LED_ENABLE = no
