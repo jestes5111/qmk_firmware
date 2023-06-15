@@ -60,6 +60,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define BW_FILL RCS(KC_L)
 #define NEXT_TAB C(KC_TAB)
 #define PREV_TAB RCS(KC_TAB)
+#define QUIT_APP A(KC_F4)
 
 enum layers {
     _RSTHD,
@@ -148,9 +149,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     X(GOAT),                                  KC_NO,     X(THMB_D), KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_TRNS,            KC_NO,     KC_NO,     X(MOYAI),  KC_NO,     KC_NO,     KC_NO,     KC_NO,
+        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,              KC_NO,     KC_NO,     X(MOYAI),  KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
-                                              KC_NO,     KC_NO,     KC_NO,                         KC_ENT,    KC_BSPC,   KC_TAB
+                                              KC_NO,     KC_NO,     KC_NO,                         KC_ENT,    KC_BSPC,   KC_TRNS
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
     ),
 
@@ -159,13 +160,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
         KC_F12,    KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_F5,                                    KC_F6,     KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F11,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                    FZ_1,      FZ_2,      FZ_3,      FZ_4,      KC_NO,     KC_NO,
+        QUIT_APP,  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                    FZ_1,      FZ_2,      FZ_3,      FZ_4,      KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_APP,    KC_NO,     SNIP_TOOL, BW_FILL,   DR_TOGG,   KC_NO,                                    WINDOW_L,  WINDOW_D,  WINDOW_U,  WINDOW_R,  KC_NO,     QK_MAKE,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_CAPS,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,              KC_TRNS,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    TO(_GAME1),
+        KC_CAPS,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,              KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    TO(_GAME1),
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
-                                              KC_NO,     KC_NO,     KC_NO,                         KC_NO,     KC_NO,     KC_NO
+                                              KC_TRNS,   KC_NO,     KC_NO,                         KC_NO,     KC_NO,     KC_NO
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
     ),
 
