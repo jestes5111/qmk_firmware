@@ -76,6 +76,7 @@ enum custom_keycodes {
     ALT_TAB = SAFE_RANGE,
     CHAR_TAB,
     CHAR_NL,
+    UP_DIR,
     DOCSTRING,
     TODO,
 };
@@ -133,9 +134,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_NO,     KC_QUOT,   KC_LABK,   KC_RABK,   KC_DQUO,   KC_DOT,                                   KC_AMPR,   KC_SCLN,   KC_LBRC,   KC_RBRC,   KC_PERC,   CHAR_TAB,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_UNDS,   KC_EXLM,   KC_MINS,   KC_PLUS,   KC_EQL,    KC_HASH,                                  KC_PIPE,   KC_COLN,   KC_LPRN,   KC_RPRN,   KC_QUES,   CHAR_NL,
+        DOCSTRING, KC_EXLM,   KC_MINS,   KC_PLUS,   KC_EQL,    KC_HASH,                                  KC_PIPE,   KC_COLN,   KC_LPRN,   KC_RPRN,   KC_QUES,   CHAR_NL,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        TODO,      KC_CIRC,   KC_SLSH,   KC_ASTR,   KC_BSLS,   KC_GRV,    DOCSTRING,          KC_NO,     KC_TILD,   KC_DLR,    KC_LCBR,   KC_RCBR,   KC_AT,     KC_NO,
+        TODO,      KC_CIRC,   KC_SLSH,   KC_ASTR,   KC_BSLS,   KC_GRV,    QK_REP,             KC_NO,     KC_TILD,   KC_DLR,    KC_LCBR,   KC_RCBR,   KC_AT,     UP_DIR,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               KC_DEL,    KC_BSPC,   KC_SPC,                        KC_NO,     KC_TRNS,   KC_NO
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
@@ -215,6 +216,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             case CHAR_NL:
                 SEND_STRING("\\n");
+                return false;
+            case UP_DIR:
+                SEND_STRING("../");
                 return false;
             case DOCSTRING:
                 SEND_STRING("\"\"\"\"\"\"");
