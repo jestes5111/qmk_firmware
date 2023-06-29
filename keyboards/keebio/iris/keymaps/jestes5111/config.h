@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define TAPPING_TERM 185
 #define TAPPING_TERM_PER_KEY
-#define QUICK_TAP_TERM 15
+#define QUICK_TAP_TERM 0
 #define PERMISSIVE_HOLD
 
 #define SWAP_HANDS_ENABLE
