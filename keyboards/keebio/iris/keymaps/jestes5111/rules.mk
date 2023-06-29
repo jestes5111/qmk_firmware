@@ -13,6 +13,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+SRC += features/layer_lock.c
+
 CAPS_WORD_ENABLE = yes
 UNICODEMAP_ENABLE = yes
 REPEAT_KEY_ENABLE = yes
