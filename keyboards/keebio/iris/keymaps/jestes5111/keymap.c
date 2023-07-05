@@ -149,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         ALT_TAB,   APP_1,     APP_2,     APP_3,     APP_4,     APP_5,                                    KC_NO,     KC_WBAK,   PREV_TAB,  NEXT_TAB,  KC_WFWD,   KC_WREF,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     NEW_APP_1, NEW_APP_2, NEW_APP_3, NEW_APP_4, NEW_APP_5, MUTE_MIC,           KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+        KC_NO,     NEW_APP_1, NEW_APP_2, NEW_APP_3, NEW_APP_4, NEW_APP_5, LYR_LOCK,           KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               KC_NO,     KC_NO,     KC_NO,                         KC_NO,     KC_TRNS,   KC_NO
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
@@ -192,7 +192,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_APP,    KC_NO,     SNIP_TOOL, BW_FILL,   DR_TOGG,   KC_NO,                                    KC_NO,     WINDOW_L,  WINDOW_D,  WINDOW_U,  WINDOW_R,  QK_MAKE,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_CAPS,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,              KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    TO(_GAME1),
+        KC_CAPS,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,              KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    DF(_GAME1),
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               KC_TRNS,   KC_NO,     KC_NO,                         KC_NO,     KC_NO,     KC_NO
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
@@ -214,13 +214,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_GAME2] = LAYOUT(
     // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
-        KC_MPLY,   KC_MPRV,   KC_MNXT,   KC_VOLU,   KC_VOLD,   KC_MUTE,                                  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    TO(_RSTHD),
+        KC_MPLY,   KC_MPRV,   KC_MNXT,   KC_VOLU,   KC_VOLD,   KC_MUTE,                                  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_ESC,    KC_F13,    KC_F14,    KC_F15,    KC_F16,    KC_TILD,                                  KC_NO,     MUTE_MIC,  KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_LCTL,   KC_F17,    KC_F18,    KC_F19,    KC_F20,    KC_EXLM,                                  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_LSFT,   KC_F21,    KC_F22,    KC_F23,    KC_F24,    KC_AT,     KC_NO,              KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+        KC_LSFT,   KC_F21,    KC_F22,    KC_F23,    KC_F24,    KC_AT,     KC_NO,              KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    DF(_RSTHD),
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               KC_TRNS,   KC_NO,     KC_NO,                         KC_NO,     KC_NO,     KC_NO
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
@@ -255,7 +255,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code(KC_LEFT);
                 return false;
             case TODO:
-                SEND_STRING(SS_LCTL("/") "TODO: ");
+                register_code(KC_LCTL);
+                tap_code(KC_SLSH);
+                unregister_code(KC_LCTL);
+                SEND_STRING("TODO: ");
                 return false;
         }
     }
@@ -306,11 +309,15 @@ void matrix_scan_user(void) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case BSPC_NAV:
-        case ENT_APP:
-        case E_SYM:
-        case SPC_SYM:
-            return TAPPING_TERM - 15;
+        case R_GUI:
+        case S_ALT:
+        case T_CTL:
+        case H_SFT:
+        case N_SFT:
+        case A_CTL:
+        case I_ALT:
+        case O_GUI:
+            return HOME_ROW_MOD_TAPPING_TERM;
         default:
             return TAPPING_TERM;
     }
@@ -322,26 +329,29 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             rgblight_sethsv_noeeprom(HSV_GREEN);
             break;
         case _APP:
-            rgblight_sethsv_noeeprom(HSV_YELLOW);
-            break;
-        case _SYM:
             rgblight_sethsv_noeeprom(HSV_RED);
             break;
+        case _SYM:
+            rgblight_sethsv_noeeprom(HSV_CYAN);
+            break;
         case _UNI:
-            rgblight_sethsv_noeeprom(HSV_ORANGE);
+            rgblight_sethsv_noeeprom(HSV_MAGENTA);
             break;
         case _SYS:
             rgblight_sethsv_noeeprom(HSV_PURPLE);
             break;
-        case _GAME1:
-            rgblight_sethsv_noeeprom(HSV_BLUE);
-            break;
         case _GAME2:
-            rgblight_sethsv_noeeprom(HSV_CYAN);
+            rgblight_sethsv_noeeprom(HSV_SPRINGGREEN);
             break;
         default:
-            rgblight_sethsv_noeeprom(HSV_OFF);
-            break;
+            switch (get_highest_layer(default_layer_state)) {
+                case _RSTHD:
+                    rgblight_sethsv_noeeprom(HSV_OFF);
+                    break;
+                case _GAME1:
+                    rgblight_sethsv_noeeprom(HSV_BLUE);
+                    break;
+            }
     }
     return state;
 }

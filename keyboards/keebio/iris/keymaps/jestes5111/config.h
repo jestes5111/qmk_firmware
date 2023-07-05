@@ -24,6 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define UNICODE_SELECTED_MODES UNICODE_MODE_WINCOMPOSE
 
+#define HOME_ROW_MOD_TAPPING_TERM 300
 #define TAPPING_TERM 185
 #define TAPPING_TERM_PER_KEY
 #define QUICK_TAP_TERM 0
