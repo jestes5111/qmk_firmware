@@ -64,8 +64,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SNIP_TOOL LSG(KC_S)
 #define DR_TOGG LSA(KC_D)
 #define BW_FILL RCS(KC_L)
-#define NEXT_TAB C(KC_TAB)
-#define PREV_TAB RCS(KC_TAB)
+#define NEXT_TAB C(KC_PGDN)
+#define PREV_TAB C(KC_PGUP)
 #define QUIT_APP A(KC_F4)
 #define CUT C(KC_X)
 #define COPY C(KC_C)
@@ -85,8 +85,7 @@ enum layers {
 };
 
 enum custom_keycodes {
-    ALT_TAB = SAFE_RANGE,
-    LYR_LOCK,
+    LYR_LOCK = SAFE_RANGE,
     CHAR_TAB,
     CHAR_NL,
     UP_DIR,
@@ -133,11 +132,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_ESC,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                    KC_NO,     KC_HOME,   KC_PGDN,   KC_PGUP,   KC_END,    KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        ALT_TAB,   KC_LGUI,   KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,                                    KC_NO,     KC_LEFT,   KC_DOWN,   KC_UP,     KC_RGHT,   KC_NO,
+        KC_NO,     KC_LGUI,   KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,                                    KC_NO,     KC_LEFT,   KC_DOWN,   KC_UP,     KC_RGHT,   KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         REDO,      UNDO,      CUT,       COPY,      PASTE,     KC_NO,     KC_NO,              LYR_LOCK,  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
-                                              KC_NO,     KC_TRNS,   KC_NO,                         KC_NO,     KC_NO,     KC_NO
+                                              KC_NO,     KC_TRNS,   KC_NO,                         KC_APP,    KC_ENT,    KC_NO
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
     ),
 
@@ -147,9 +146,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         QUIT_APP,  LAUNCH_1,  LAUNCH_2,  LAUNCH_3,  LAUNCH_4,  LAUNCH_5,                                 KC_NO,     MUTE_MIC,  KC_VOLD,   KC_VOLU,   KC_MUTE,   KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        ALT_TAB,   APP_1,     APP_2,     APP_3,     APP_4,     APP_5,                                    KC_NO,     KC_WBAK,   PREV_TAB,  NEXT_TAB,  KC_WFWD,   KC_WREF,
+        KC_NO,     APP_1,     APP_2,     APP_3,     APP_4,     APP_5,                                    KC_NO,     KC_WBAK,   PREV_TAB,  NEXT_TAB,  KC_WFWD,   KC_WREF,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     NEW_APP_1, NEW_APP_2, NEW_APP_3, NEW_APP_4, NEW_APP_5, LYR_LOCK,           KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+        KC_NO,     NEW_APP_1, NEW_APP_2, NEW_APP_3, NEW_APP_4, NEW_APP_5, LYR_LOCK,           KC_NO,     KC_NO,     KC_MPRV,   KC_MSTP,   KC_MPLY,   KC_MNXT,   KC_NO,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               KC_NO,     KC_NO,     KC_NO,                         KC_NO,     KC_TRNS,   KC_NO
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
@@ -190,7 +189,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                    KC_NO,     FZ_1,      FZ_2,      FZ_3,      FZ_4,      KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_APP,    KC_NO,     SNIP_TOOL, BW_FILL,   DR_TOGG,   KC_NO,                                    KC_NO,     WINDOW_L,  WINDOW_D,  WINDOW_U,  WINDOW_R,  QK_MAKE,
+        KC_NO,     KC_NO,     SNIP_TOOL, BW_FILL,   DR_TOGG,   KC_NO,                                    KC_NO,     WINDOW_L,  WINDOW_D,  WINDOW_U,  WINDOW_R,  QK_MAKE,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_CAPS,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,              KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    DF(_GAME1),
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
@@ -262,21 +261,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
         }
     }
-
-    switch (keycode) {
-        case ALT_TAB:
-            if (record->event.pressed) {
-                if (!is_alt_tab_active) {
-                    is_alt_tab_active = true;
-                    register_code(KC_LALT);
-                }
-                alt_tab_timer = timer_read();
-                register_code(KC_TAB);
-            } else {
-                unregister_code(KC_TAB);
-            }
-            break;
-    }
     return true;
 }
 
@@ -295,15 +279,6 @@ bool caps_word_press_user(uint16_t keycode) {
             return true;
         default:
             return false;
-    }
-}
-
-void matrix_scan_user(void) {
-    if (is_alt_tab_active) {
-        if (timer_elapsed(alt_tab_timer) > 250) {
-            unregister_code(KC_LALT);
-            is_alt_tab_active = false;
-        }
     }
 }
 
