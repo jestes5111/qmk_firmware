@@ -61,6 +61,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WINDOW_U G(KC_UP)
 #define WINDOW_R G(KC_RGHT)
 #define MUTE_MIC RCS(KC_M)
+#define TASK_MGR RCS(KC_ESC)
 #define SNIP_TOOL LSG(KC_S)
 #define DR_TOGG LSA(KC_D)
 #define BW_FILL RCS(KC_L)
@@ -86,8 +87,6 @@ enum layers {
 
 enum custom_keycodes {
     LYR_LOCK = SAFE_RANGE,
-    CHAR_TAB,
-    CHAR_NL,
     UP_DIR,
     DOCSTRING,
     TODO,
@@ -134,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_NO,     KC_LGUI,   KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,                                    KC_NO,     KC_LEFT,   KC_DOWN,   KC_UP,     KC_RGHT,   KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        REDO,      UNDO,      CUT,       COPY,      PASTE,     KC_NO,     KC_NO,              LYR_LOCK,  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,              LYR_LOCK,  KC_INS,    PASTE,     COPY,      CUT,       UNDO,      REDO,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               KC_NO,     KC_TRNS,   KC_NO,                         KC_APP,    KC_ENT,    KC_NO
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
@@ -158,11 +157,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
         KC_NO,     KC_7,      KC_8,      KC_9,      KC_0,      KC_5,                                     KC_6,      KC_1,      KC_2,      KC_3,      KC_4,      KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_QUOT,   KC_LABK,   KC_RABK,   KC_DQUO,   KC_DOT,                                   KC_AMPR,   KC_SCLN,   KC_LBRC,   KC_RBRC,   KC_PERC,   CHAR_TAB,
+        KC_NO,     KC_QUOT,   KC_LABK,   KC_RABK,   KC_DQUO,   UP_DIR,                                   KC_AMPR,   KC_NO,     KC_LBRC,   KC_RBRC,   KC_PERC,   KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        DOCSTRING, KC_EXLM,   KC_MINS,   KC_PLUS,   KC_EQL,    KC_HASH,                                  KC_PIPE,   KC_COLN,   KC_LPRN,   KC_RPRN,   KC_QUES,   CHAR_NL,
+        DOCSTRING, KC_EXLM,   KC_MINS,   KC_PLUS,   KC_EQL,    KC_HASH,                                  KC_PIPE,   KC_COLN,   KC_LPRN,   KC_RPRN,   KC_QUES,   KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        TODO,      KC_CIRC,   KC_SLSH,   KC_ASTR,   KC_BSLS,   KC_GRV,    LYR_LOCK,           LYR_LOCK,  KC_TILD,   KC_DLR,    KC_LCBR,   KC_RCBR,   KC_AT,     UP_DIR,
+        TODO,      KC_CIRC,   KC_SLSH,   KC_ASTR,   KC_BSLS,   KC_GRV,    LYR_LOCK,           LYR_LOCK,  KC_TILD,   KC_DLR,    KC_LCBR,   KC_RCBR,   KC_AT,     KC_NO,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               KC_TAB,    KC_BSPC,   KC_TRNS,                       KC_TRNS,   KC_ENT,    KC_DEL
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
@@ -187,7 +186,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
         KC_F12,    KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_F5,                                    KC_F6,     KC_F1,     KC_F2,     KC_F3,     KC_F4,     KC_F11,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                    KC_NO,     FZ_1,      FZ_2,      FZ_3,      FZ_4,      KC_NO,
+        TASK_MGR,  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                    KC_NO,     FZ_1,      FZ_2,      FZ_3,      FZ_4,      KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_NO,     KC_NO,     SNIP_TOOL, BW_FILL,   DR_TOGG,   KC_NO,                                    KC_NO,     WINDOW_L,  WINDOW_D,  WINDOW_U,  WINDOW_R,  QK_MAKE,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
@@ -230,6 +229,7 @@ void keyboard_post_init_user(void) {
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(HSV_OFF);
     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+    keymap_config.nkro = false;
 }
 
 bool is_alt_tab_active = false;
@@ -238,12 +238,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_layer_lock(keycode, record, LYR_LOCK)) return false;
     if (record->event.pressed) {
         switch (keycode) {
-            case CHAR_TAB:
-                SEND_STRING("\\t");
-                return false;
-            case CHAR_NL:
-                SEND_STRING("\\n");
-                return false;
             case UP_DIR:
                 SEND_STRING("../");
                 return false;
@@ -322,9 +316,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             switch (get_highest_layer(default_layer_state)) {
                 case _RSTHD:
                     rgblight_sethsv_noeeprom(HSV_OFF);
+                    keymap_config.nkro = false;
                     break;
                 case _GAME1:
                     rgblight_sethsv_noeeprom(HSV_BLUE);
+                    keymap_config.nkro = true;
                     break;
             }
     }
