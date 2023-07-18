@@ -30,10 +30,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define QUICK_TAP_TERM 0
 #define PERMISSIVE_HOLD
 
+#define ONESHOT_TIMEOUT 400
+
 #define SWAP_HANDS_ENABLE
 
 // Saving space
-#define NO_ACTION_ONESHOT
 #define NO_ALT_REPEAT_KEY
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE

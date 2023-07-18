@@ -36,6 +36,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAB_SYS LT(_SYS, KC_TAB)
 #define DEL_UNI LT(_UNI, KC_DEL)
 
+#define OS_LSFT OSM(MOD_LSFT)
+#define OS_RSFT OSM(MOD_RSFT)
+
 // Windows shortcuts
 #define APP_1 G(KC_1)
 #define APP_2 G(KC_2)
@@ -61,6 +64,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WINDOW_U G(KC_UP)
 #define WINDOW_R G(KC_RGHT)
 #define MUTE_MIC RCS(KC_M)
+#define DEAFEN RCS(KC_D)
 #define TASK_MGR RCS(KC_ESC)
 #define SNIP_TOOL LSG(KC_S)
 #define DR_TOGG LSA(KC_D)
@@ -119,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_UNDS,   R_GUI,     S_ALT,     T_CTL,     H_SFT,     KC_D,                                     KC_M,      N_SFT,     A_CTL,     I_ALT,     O_GUI,     KC_QUOT,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        CW_TOGG,   KC_SLSH,   KC_V,      KC_G,      KC_P,      KC_B,      QK_REP,             QK_REP,    KC_X,      KC_W,      KC_DOT,    KC_SCLN,   KC_MINS,   CW_TOGG,
+        CW_TOGG,   OS_LSFT,   KC_V,      KC_G,      KC_P,      KC_B,      QK_REP,             QK_REP,    KC_X,      KC_W,      KC_DOT,    KC_SCLN,   OS_RSFT,   CW_TOGG,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               TAB_SYS,   BSPC_NAV,  SPC_SYM,                       E_SYM,     ENT_APP,   DEL_UNI
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
@@ -135,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,              LYR_LOCK,  KC_INS,    PASTE,     COPY,      CUT,       UNDO,      REDO,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
-                                              KC_NO,     KC_TRNS,   KC_NO,                         KC_APP,    KC_ENT,    KC_NO
+                                              KC_TAB,    KC_TRNS,   KC_NO,                         KC_APP,    KC_ENT,    KC_NO
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
     ),
 
@@ -157,11 +161,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
         KC_NO,     KC_7,      KC_8,      KC_9,      KC_0,      KC_5,                                     KC_6,      KC_1,      KC_2,      KC_3,      KC_4,      KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_QUOT,   KC_LABK,   KC_RABK,   KC_DQUO,   UP_DIR,                                   KC_AMPR,   KC_NO,     KC_LBRC,   KC_RBRC,   KC_PERC,   KC_NO,
+        KC_NO,     KC_NO,     KC_LABK,   KC_RABK,   KC_AT,     UP_DIR,                                   KC_NO,     KC_TILD,   KC_LBRC,   KC_RBRC,   KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        DOCSTRING, KC_EXLM,   KC_MINS,   KC_PLUS,   KC_EQL,    KC_HASH,                                  KC_PIPE,   KC_COLN,   KC_LPRN,   KC_RPRN,   KC_QUES,   KC_NO,
+        TODO,      KC_EXLM,   KC_MINS,   KC_PLUS,   KC_EQL,    KC_HASH,                                  KC_PIPE,   KC_COLN,   KC_LPRN,   KC_RPRN,   KC_QUES,   DOCSTRING,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        TODO,      KC_CIRC,   KC_SLSH,   KC_ASTR,   KC_BSLS,   KC_GRV,    LYR_LOCK,           LYR_LOCK,  KC_TILD,   KC_DLR,    KC_LCBR,   KC_RCBR,   KC_AT,     KC_NO,
+        KC_NO,     KC_CIRC,   KC_SLSH,   KC_ASTR,   KC_BSLS,   KC_GRV,    LYR_LOCK,           LYR_LOCK,  KC_AMPR,   KC_DLR,    KC_LCBR,   KC_RCBR,   KC_PERC,   KC_NO,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               KC_TAB,    KC_BSPC,   KC_TRNS,                       KC_TRNS,   KC_ENT,    KC_DEL
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
@@ -214,11 +218,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
         KC_MPLY,   KC_MPRV,   KC_MNXT,   KC_VOLU,   KC_VOLD,   KC_MUTE,                                  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_ESC,    KC_F13,    KC_F14,    KC_F15,    KC_F16,    KC_TILD,                                  KC_NO,     MUTE_MIC,  KC_NO,     KC_NO,     KC_NO,     KC_NO,
+        KC_ESC,    KC_F13,    KC_F14,    KC_F15,    KC_F16,    KC_TILD,                                  KC_NO,     MUTE_MIC,  KC_NO,     KC_NO,     DEAFEN,    KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_LCTL,   KC_F17,    KC_F18,    KC_F19,    KC_F20,    KC_EXLM,                                  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+        KC_LCTL,   KC_F17,    KC_F18,    KC_F19,    KC_F20,    KC_HASH,                                  KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_LSFT,   KC_F21,    KC_F22,    KC_F23,    KC_F24,    KC_AT,     KC_NO,              KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    DF(_RSTHD),
+        KC_LSFT,   KC_F21,    KC_F22,    KC_F23,    KC_F24,    KC_GRV,    KC_NO,              KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    DF(_RSTHD),
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               KC_TRNS,   KC_NO,     KC_NO,                         KC_NO,     KC_NO,     KC_NO
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
@@ -232,8 +236,6 @@ void keyboard_post_init_user(void) {
     keymap_config.nkro = false;
 }
 
-bool is_alt_tab_active = false;
-uint16_t alt_tab_timer = 0;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_layer_lock(keycode, record, LYR_LOCK)) return false;
     if (record->event.pressed) {
