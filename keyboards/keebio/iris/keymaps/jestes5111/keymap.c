@@ -14,8 +14,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 #include QMK_KEYBOARD_H
 
+#include "unicode.h"
 #include "features/layer_lock.h"
 
 // Home-row mods
@@ -72,6 +74,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define NEXT_TAB C(KC_PGDN)
 #define PREV_TAB C(KC_PGUP)
 #define QUIT_APP A(KC_F4)
+#define SEL_ALL C(KC_A)
 #define CUT C(KC_X)
 #define COPY C(KC_C)
 #define PASTE C(KC_V)
@@ -96,30 +99,12 @@ enum custom_keycodes {
     TODO,
 };
 
-enum unicode_names {
-    I_CIRC,
-    DSGS,
-    THMB_U,
-    THMB_D,
-    MOYAI,
-    GOAT,
-};
-
-const uint32_t unicode_map[] PROGMEM = {
-    [I_CIRC] = 0x00EE, // î
-    [DSGS] = 0x1F978, // 🥸
-    [THMB_U] = 0x1F44D, // 👍
-    [THMB_D] = 0x1F44E, // 👎
-    [MOYAI] = 0x1F5FF, // 🗿
-    [GOAT] = 0x1F98C, // 🦌
-};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_RSTHD] = LAYOUT(
     // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
-        KC_GRV,    KC_7,      KC_8,      KC_9,      KC_0,      KC_5,                                     KC_6,      KC_1,      KC_2,      KC_3,      KC_4,      KC_BSLS,
+        KC_GRV,    KC_7,      KC_8,      KC_9,      KC_0,      KC_5,                                     KC_6,      KC_1,      KC_2,      KC_3,      KC_4,      I_CIRC,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_ESC,    KC_J,      KC_C,      KC_Y,      KC_F,      KC_K,                                     KC_Z,      KC_L,      KC_COMM,   KC_U,      KC_Q,      KC_EQL,
+        KC_ESC,    KC_J,      KC_C,      KC_Y,      KC_F,      KC_K,                                     KC_Z,      KC_L,      KC_COMM,   KC_U,      KC_Q,      KC_SLSH,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_UNDS,   R_GUI,     S_ALT,     T_CTL,     H_SFT,     KC_D,                                     KC_M,      N_SFT,     A_CTL,     I_ALT,     O_GUI,     KC_QUOT,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
@@ -135,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_ESC,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                    KC_NO,     KC_HOME,   KC_PGDN,   KC_PGUP,   KC_END,    KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_LGUI,   KC_LALT,   KC_LCTL,   KC_LSFT,   KC_NO,                                    KC_NO,     KC_LEFT,   KC_DOWN,   KC_UP,     KC_RGHT,   KC_NO,
+        KC_NO,     KC_LGUI,   KC_LALT,   KC_LCTL,   KC_LSFT,   SEL_ALL,                                  KC_NO,     KC_LEFT,   KC_DOWN,   KC_UP,     KC_RGHT,   KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,              LYR_LOCK,  KC_INS,    PASTE,     COPY,      CUT,       UNDO,      REDO,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
@@ -175,13 +160,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
         KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,                                    X(DSGS),   X(THMB_U), X(I_CIRC), KC_NO,     KC_NO,     KC_NO,
+        KC_NO,     KC_NO,     KC_NO,     KC_NO,     FIRE,      KC_NO,                                    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     X(GOAT),                                  KC_NO,     X(THMB_D), KC_NO,     KC_NO,     KC_NO,     KC_NO,
+        KC_NO,     THINK_SAL, SKULL,     THUMB,     KC_LSFT,   DISGUISE,                                 MOYAI,     KC_RSFT,   ALIEN,     KC_NO,     KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,              KC_NO,     KC_NO,     X(MOYAI),  KC_NO,     KC_NO,     KC_NO,     KC_NO,
+        KC_NO,     KC_NO,     KC_NO,     GOAT,      KC_NO,     MID_FING,  LYR_LOCK,           KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
-                                              KC_NO,     KC_NO,     KC_NO,                         KC_ENT,    KC_BSPC,   KC_TRNS
+                                              KC_NO,     KC_BSPC,   KC_SPC,                        KC_NO,     KC_ENT,    KC_TRNS
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
     ),
 
