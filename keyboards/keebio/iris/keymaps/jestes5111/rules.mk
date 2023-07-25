@@ -14,11 +14,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 SRC += features/layer_lock.c
+SRC += features/macros.c
 
 CAPS_WORD_ENABLE = yes
-UNICODEMAP_ENABLE = yes
-REPEAT_KEY_ENABLE = yes
+KEY_OVERRIDE_ENABLE = yes
 NKRO_ENABLE = yes
+REPEAT_KEY_ENABLE = yes
+UNICODEMAP_ENABLE = yes
 
 # Saving space
 BACKLIGHT_ENABLE = no
@@ -29,5 +31,4 @@ SPACE_CADET_ENABLE = no
 GRAVE_ESC_ENABLE = no
 MAGIC_ENABLE = no
 MOUSEKEY_ENABLE = no
-KEY_OVERRIDE_ENABLE = no
 SLEEP_LED_ENABLE = no

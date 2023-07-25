@@ -17,69 +17,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
-#include "unicode.h"
+#include "features/key_overrides.h"
 #include "features/layer_lock.h"
-
-// Home-row mods
-#define R_GUI LGUI_T(KC_R)
-#define S_ALT LALT_T(KC_S)
-#define T_CTL LCTL_T(KC_T)
-#define H_SFT LSFT_T(KC_H)
-#define N_SFT RSFT_T(KC_N)
-#define A_CTL RCTL_T(KC_A)
-#define I_ALT LALT_T(KC_I) // RALT (AltGr) causes issues with Unicode
-#define O_GUI RGUI_T(KC_O)
-
-// Layer taps
-#define BSPC_NAV LT(_NAV, KC_BSPC)
-#define ENT_APP LT(_APP, KC_ENT)
-#define SPC_SYM LT(_SYM, KC_SPC)
-#define E_SYM LT(_SYM, KC_E)
-#define TAB_SYS LT(_SYS, KC_TAB)
-#define DEL_UNI LT(_UNI, KC_DEL)
-
-#define OS_LSFT OSM(MOD_LSFT)
-#define OS_RSFT OSM(MOD_RSFT)
-
-// Windows shortcuts
-#define APP_1 G(KC_1)
-#define APP_2 G(KC_2)
-#define APP_3 G(KC_3)
-#define APP_4 G(KC_4)
-#define APP_5 G(KC_5)
-#define NEW_APP_1 LSG(KC_1)
-#define NEW_APP_2 LSG(KC_2)
-#define NEW_APP_3 LSG(KC_3)
-#define NEW_APP_4 LSG(KC_4)
-#define NEW_APP_5 LSG(KC_5)
-#define LAUNCH_1 MEH(KC_1)
-#define LAUNCH_2 MEH(KC_2)
-#define LAUNCH_3 MEH(KC_3)
-#define LAUNCH_4 MEH(KC_4)
-#define LAUNCH_5 MEH(KC_5)
-#define FZ_1 LCAG(KC_1)
-#define FZ_2 LCAG(KC_2)
-#define FZ_3 LCAG(KC_3)
-#define FZ_4 LCAG(KC_4)
-#define WINDOW_L G(KC_LEFT)
-#define WINDOW_D G(KC_DOWN)
-#define WINDOW_U G(KC_UP)
-#define WINDOW_R G(KC_RGHT)
-#define MUTE_MIC RCS(KC_M)
-#define DEAFEN RCS(KC_D)
-#define TASK_MGR RCS(KC_ESC)
-#define SNIP_TOOL LSG(KC_S)
-#define DR_TOGG LSA(KC_D)
-#define BW_FILL RCS(KC_L)
-#define NEXT_TAB C(KC_PGDN)
-#define PREV_TAB C(KC_PGUP)
-#define QUIT_APP A(KC_F4)
-#define SEL_ALL C(KC_A)
-#define CUT C(KC_X)
-#define COPY C(KC_C)
-#define PASTE C(KC_V)
-#define UNDO C(KC_Z)
-#define REDO C(KC_Y)
+#include "features/macros.h"
+#include "features/unicode.h"
 
 enum layers {
     _RSTHD,
@@ -92,19 +33,12 @@ enum layers {
     _GAME2,
 };
 
-enum custom_keycodes {
-    LYR_LOCK = SAFE_RANGE,
-    UP_DIR,
-    DOCSTRING,
-    TODO,
-};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_RSTHD] = LAYOUT(
     // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
-        KC_GRV,    KC_7,      KC_8,      KC_9,      KC_0,      KC_5,                                     KC_6,      KC_1,      KC_2,      KC_3,      KC_4,      I_CIRC,
+        KC_GRV,    KC_7,      KC_8,      KC_9,      KC_0,      KC_5,                                     KC_6,      KC_1,      KC_2,      KC_3,      KC_4,      KC_SLSH,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_ESC,    KC_J,      KC_C,      KC_Y,      KC_F,      KC_K,                                     KC_Z,      KC_L,      KC_COMM,   KC_U,      KC_Q,      KC_SLSH,
+        KC_ESC,    KC_J,      KC_C,      KC_Y,      KC_F,      KC_K,                                     KC_Z,      KC_L,      KC_COMM,   KC_U,      KC_Q,      DASH,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_UNDS,   R_GUI,     S_ALT,     T_CTL,     H_SFT,     KC_D,                                     KC_M,      N_SFT,     A_CTL,     I_ALT,     O_GUI,     KC_QUOT,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
@@ -146,11 +80,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐                              ┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
         KC_NO,     KC_7,      KC_8,      KC_9,      KC_0,      KC_5,                                     KC_6,      KC_1,      KC_2,      KC_3,      KC_4,      KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_NO,     KC_LABK,   KC_RABK,   KC_AT,     UP_DIR,                                   KC_NO,     KC_TILD,   KC_LBRC,   KC_RBRC,   KC_NO,     KC_NO,
+        KC_NO,     KC_NO,     KC_LABK,   KC_RABK,   KC_AT,     UP_DIR,                                   KC_PIPE,   KC_AMPR,   KC_LBRC,   KC_RBRC,   KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        TODO,      KC_EXLM,   KC_MINS,   KC_PLUS,   KC_EQL,    KC_HASH,                                  KC_PIPE,   KC_COLN,   KC_LPRN,   KC_RPRN,   KC_QUES,   DOCSTRING,
+        TODO,      KC_EXLM,   KC_MINS,   KC_PLUS,   KC_EQL,    KC_HASH,                                  KC_TILD,   KC_COLN,   KC_LPRN,   KC_RPRN,   KC_QUES,   DOCSTRING,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_CIRC,   KC_SLSH,   KC_ASTR,   KC_BSLS,   KC_GRV,    LYR_LOCK,           LYR_LOCK,  KC_AMPR,   KC_DLR,    KC_LCBR,   KC_RCBR,   KC_PERC,   KC_NO,
+        KC_NO,     KC_CIRC,   KC_SLSH,   KC_ASTR,   KC_BSLS,   KC_GRV,    LYR_LOCK,           LYR_LOCK,  KC_NO,     KC_DLR,    KC_LCBR,   KC_RCBR,   KC_PERC,   KC_NO,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               KC_TAB,    KC_BSPC,   KC_TRNS,                       KC_TRNS,   KC_ENT,    KC_DEL
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
@@ -223,25 +157,7 @@ void keyboard_post_init_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_layer_lock(keycode, record, LYR_LOCK)) return false;
-    if (record->event.pressed) {
-        switch (keycode) {
-            case UP_DIR:
-                SEND_STRING("../");
-                return false;
-            case DOCSTRING:
-                SEND_STRING("\"\"\"\"\"\"");
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-                return false;
-            case TODO:
-                register_code(KC_LCTL);
-                tap_code(KC_SLSH);
-                unregister_code(KC_LCTL);
-                SEND_STRING("TODO: ");
-                return false;
-        }
-    }
+    if (!process_macros(keycode, record)) return false;
     return true;
 }
 
@@ -257,6 +173,7 @@ bool caps_word_press_user(uint16_t keycode) {
         case KC_UNDS:
         case KC_SLSH:
         case KC_BSLS:
+        case KC_QUOT:
             return true;
         default:
             return false;
