@@ -35,7 +35,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SWAP_HANDS_ENABLE
 
 // Saving space
-#define NO_ALT_REPEAT_KEY
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
 #undef RGBLIGHT_ANIMATIONS

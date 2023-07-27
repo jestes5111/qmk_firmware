@@ -16,13 +16,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
-#include QMK_KEYBOARD_H
 
-const key_override_t dot_exclaim = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_EXLM);
-const key_override_t comma_question = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_QUES);
-
-const key_override_t **key_overrides = (const key_override_t *[]) {
-    &dot_exclaim,
-    &comma_question,
-    NULL
+enum layers {
+    _RSTHD,
+    _NAV,
+    _APP,
+    _SYM,
+    _UNI,
+    _SYS,
+    _GAME,
+    _EXTRA,
 };
+
+// Layer taps
+#define BSPC_NAV LT(_NAV, KC_BSPC)
+#define ENT_APP LT(_APP, KC_ENT)
+#define SPC_SYM LT(_SYM, KC_SPC)
+#define E_SYM LT(_SYM, KC_E)
+#define TAB_SYS LT(_SYS, KC_TAB)
+#define DEL_UNI LT(_UNI, KC_DEL)
+
+// Short-hand names
+#define TYPING MO(_RSTHD)
+#define GAMING MO(_GAME)
+#define EXTRA MO(_EXTRA)
