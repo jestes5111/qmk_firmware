@@ -16,6 +16,7 @@
 SRC += features/layer_lock.c
 SRC += features/layers.c
 SRC += features/macros.c
+SRC += features/num_word.c
 SRC += features/settings.c
 
 CAPS_WORD_ENABLE = yes
@@ -34,3 +35,4 @@ MOUSEKEY_ENABLE = no
 REPEAT_KEY_ENABLE = no
 SLEEP_LED_ENABLE = no
 SPACE_CADET_ENABLE = no
+TAP_DANCE_ENABLE = no
