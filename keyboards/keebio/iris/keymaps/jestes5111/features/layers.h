@@ -38,6 +38,6 @@ enum layers {
 #define DEL_UNI LT(_UNI, KC_DEL)
 
 // Short-hand names
-#define TYPING MO(_RSTHD)
-#define GAMING MO(_GAME)
+#define TYPING DF(_RSTHD)
+#define GAMING DF(_GAME)
 #define EXTRA MO(_EXTRA)

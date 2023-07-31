@@ -1,4 +1,5 @@
-/* Copyright 2021 Joshua T.
+/**
+ * Copyright 2023 Jesse Estes (@jestes5111)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,13 +16,13 @@
  */
 
 #pragma once
+
 #include QMK_KEYBOARD_H
+
 #include "layers.h"
 #include "macros.h"
 
-bool is_num_word_enabled(void);
+bool num_word_enabled(void);
 void enable_num_word(void);
 void disable_num_word(void);
-void toggle_num_word(void);
-
 bool process_num_word(uint16_t keycode, const keyrecord_t *record);

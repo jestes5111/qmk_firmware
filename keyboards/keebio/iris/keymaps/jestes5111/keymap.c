@@ -86,9 +86,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         KC_NO,     KC_J,      KC_NO,     KC_NO,     KC_NO,     KC_K,                                     KC_NO,     KC_NO,     KC_COMM,   KC_NO,     KC_NO,     KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤                              ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_7,      KC_8,      KC_9,      KC_0,      KC_5,                                     KC_6,      KC_1,      KC_2,      KC_3,      KC_4,      KC_NO,
+        KC_UNDS,   KC_7,      KC_8,      KC_9,      KC_0,      KC_5,                                     KC_6,      KC_1,      KC_2,      KC_3,      KC_4,      KC_NO,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐        ┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        KC_NO,     KC_NO,     KC_NO,     SFT_G,     KC_NO,     KC_NO,     KC_NO,              KC_TRNS,   KC_NO,     KC_NO,     KC_DOT,    KC_NO,     KC_NO,     KC_NO,
+        KC_NO,     KC_NO,     KC_NO,     SFT_G,     KC_P,      KC_NO,     KC_NO,              CANCEL,    KC_X,      KC_NO,     KC_DOT,    KC_NO,     KC_PERC,   KC_NO,
     // └──────────┴──────────┴──────────┴────┬─────┴────┬─────┴────┬─────┴────┬─────┘        └────┬─────┴────┬─────┴────┬─────┴────┬─────┴──────────┴──────────┴──────────┘
                                               KC_NO,     KC_BSPC,   KC_SPC,                        KC_NO,     KC_ENT,    KC_DEL
     //                                       └──────────┴──────────┴──────────┘                   └──────────┴──────────┴──────────┘
@@ -153,9 +153,102 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_layer_lock(keycode, record, LYR_LOCK)) { return false; }
-    if (!process_macros(keycode, record)) { return false; }
-    if (!process_num_word(keycode, record)) { return false; }
+    if (!process_num_word(keycode, record)) {
+        return false;
+    }
+    if (!process_layer_lock(keycode, record, LYR_LOCK)) {
+        return false;
+    }
 
+    switch (keycode) {
+        case UP_DIR:
+            if (record->event.pressed) {
+                SEND_STRING("../");
+            }
+            return false;
+        case DOCSTRING:
+            if (record->event.pressed) {
+                SEND_STRING("\"\"\"\"\"\"");
+                tap_code(KC_LEFT);
+                tap_code(KC_LEFT);
+                tap_code(KC_LEFT);
+            }
+            return false;
+        case TODO:
+            if (record->event.pressed) {
+                register_code(KC_LCTL);
+                tap_code(KC_SLSH);
+                unregister_code(KC_LCTL);
+                SEND_STRING("TODO: ");
+            }
+            return false;
+        case NUMWORD:
+            if (record->event.pressed) {
+                enable_num_word();
+            }
+            return false;
+        case CANCEL:
+            if (record->event.pressed) {
+                disable_num_word();
+            }
+            return false;
+    }
     return true;
 }
+
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        case KC_A ... KC_Z:
+            add_weak_mods(MOD_BIT(KC_LSFT));
+            return true;
+        case KC_1 ... KC_0:
+        case KC_BSPC:
+        case KC_DEL:
+        case KC_MINS:
+        case KC_UNDS:
+        case KC_SLSH:
+        case KC_BSLS:
+        case KC_QUOT:
+            return true;
+        default:
+            return false;
+    }
+}
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case R_GUI:
+        case S_ALT:
+        case T_CTL:
+        case H_SFT:
+        case N_SFT:
+        case A_CTL:
+        case I_ALT:
+        case O_GUI:
+            return HOME_ROW_MOD_TAPPING_TERM;
+        default:
+            return TAPPING_TERM;
+    }
+}
+
+void keyboard_post_init_user(void) {
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_OFF);
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+    keymap_config.nkro = false;
+}
+
+const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
+    /* Left hand, matrix positions */
+    {{0, 5}, {1, 5}, {2, 5}, {3, 5}, {4, 5}, {5, 5}},
+    {{0, 6}, {1, 6}, {2, 6}, {3, 6}, {4, 6}, {5, 6}},
+    {{0, 7}, {1, 7}, {2, 7}, {3, 7}, {4, 7}, {5, 7}},
+    {{0, 8}, {1, 8}, {2, 8}, {3, 8}, {4, 8}, {5, 8}},
+    {{0, 9}, {1, 9}, {2, 9}, {3, 9}, {4, 9}, {5, 9}},
+    /* Right hand, matrix positions */
+    {{0, 0}, {1, 0}, {2, 0}, {3, 0}, {4, 0}, {5, 0}},
+    {{0, 1}, {1, 1}, {2, 1}, {3, 1}, {4, 1}, {5, 1}},
+    {{0, 2}, {1, 2}, {2, 2}, {3, 2}, {4, 2}, {5, 2}},
+    {{0, 3}, {1, 3}, {2, 3}, {3, 3}, {4, 3}, {5, 3}},
+    {{0, 4}, {1, 4}, {2, 4}, {3, 4}, {4, 4}, {5, 4}},
+};

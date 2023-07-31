@@ -76,6 +76,7 @@ enum custom_keycodes {
     DOCSTRING,
     NUMWORD,
     TODO,
+    CANCEL,
 };
 
 bool process_macros(uint16_t keycode, keyrecord_t *record);
