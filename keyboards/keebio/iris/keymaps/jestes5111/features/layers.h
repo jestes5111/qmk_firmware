@@ -18,14 +18,14 @@
 #pragma once
 
 enum layers {
-    _RSTHD,
+    _RSTHD = 0,
+    _GAME,
     _NAV,
     _APP,
     _SYM,
     _NUM,
     _UNI,
     _SYS,
-    _GAME,
     _EXTRA,
 };
 

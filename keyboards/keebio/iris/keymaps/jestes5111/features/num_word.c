@@ -39,6 +39,7 @@ bool process_num_word(uint16_t keycode, const keyrecord_t *record) {
     }
 
     switch (keycode) {
+        case KC_NO:
         case KC_1 ... KC_0:
         case KC_PERC:
         case KC_COMM:
@@ -52,7 +53,7 @@ bool process_num_word(uint16_t keycode, const keyrecord_t *record) {
         case KC_BSPC:
         case KC_X:
         case KC_ENT:
-        case KC_NO:
+        case KC_TAB:
             return true;
         case CANCEL:
             if (record->event.pressed) {

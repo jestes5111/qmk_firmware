@@ -78,5 +78,3 @@ enum custom_keycodes {
     TODO,
     CANCEL,
 };
-
-bool process_macros(uint16_t keycode, keyrecord_t *record);
