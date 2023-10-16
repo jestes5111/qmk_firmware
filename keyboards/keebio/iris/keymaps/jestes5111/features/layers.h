@@ -22,8 +22,8 @@ enum layers {
     _GAME,
     _NAV,
     _APP,
-    _SYM,
     _NUM,
+    _SYM,
     _UNI,
     _SYS,
     _EXTRA,
@@ -41,3 +41,4 @@ enum layers {
 #define TYPING DF(_RSTHD)
 #define GAMING DF(_GAME)
 #define EXTRA MO(_EXTRA)
+#define SYMBOL MO(_SYM)

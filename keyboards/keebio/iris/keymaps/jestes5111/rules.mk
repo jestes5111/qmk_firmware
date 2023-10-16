@@ -15,6 +15,7 @@
 
 SRC += features/layer_lock.c
 SRC += features/layers.c
+SRC += features/macros.c
 SRC += features/num_word.c
 
 CAPS_WORD_ENABLE = yes
