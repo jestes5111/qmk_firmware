@@ -18,58 +18,52 @@
 #pragma once
 
 enum unicode_names {
-    // Non-emoji
+    // General purpose
     _EN_DASH,
     _EM_DASH,
     _I_CIRCUMFLEX_LOWER,
     _I_CIRCUMFLEX_UPPER,
 
-    // Emoji
-    _ALIEN,
-    _DISGUISED_FACE,
-    _FIRE,
-    _GOAT,
-    _MIDDLE_FINGER,
-    _MOYAI,
-    _SALUTE,
-    _SKULL,
-    _THINKING,
-    _THUMB_UP,
-    _THUMB_DOWN,
+    // Scottish Gaelic
+    _A_GRAVE_LOWER,
+    _A_GRAVE_UPPER,
+    _E_GRAVE_LOWER,
+    _E_GRAVE_UPPER,
+    _I_GRAVE_LOWER,
+    _I_GRAVE_UPPER,
+    _O_GRAVE_LOWER,
+    _O_GRAVE_UPPER,
+    _U_GRAVE_LOWER,
+    _U_GRAVE_UPPER,
 };
 
 const uint32_t unicode_map[] PROGMEM = {
-    // Non-emoji
+    // General purpose
     [_EN_DASH] = 0x2013, // –
     [_EM_DASH] = 0x2014, // —
     [_I_CIRCUMFLEX_LOWER] = 0x00EE, // î
     [_I_CIRCUMFLEX_UPPER] = 0x00CE, // Î
 
-    // Emoji
-    [_ALIEN] = 0x1F47D, // 👽
-    [_DISGUISED_FACE] = 0x1F978, // 🥸
-    [_FIRE] = 0x1F525, // 🔥
-    [_GOAT] = 0x1F98C, // 🦌
-    [_MIDDLE_FINGER] = 0x1F595, // 🖕
-    [_MOYAI] = 0x1F5FF, // 🗿
-    [_SALUTE] = 0x1FAE1, // 🫡
-    [_SKULL] = 0x1F480, // 💀
-    [_THINKING] = 0x1F914, // 🤔
-    [_THUMB_UP] = 0x1F44D, // 👍
-    [_THUMB_DOWN] = 0x1F44E, // 👎
+    // Scottish Gaelic
+    [_A_GRAVE_LOWER] = 0x00E0, // î
+    [_A_GRAVE_UPPER] = 0x00C0, // î
+    [_E_GRAVE_LOWER] = 0x00E8, // î
+    [_E_GRAVE_UPPER] = 0x00C8, // î
+    [_I_GRAVE_LOWER] = 0x00EC, // î
+    [_I_GRAVE_UPPER] = 0x00CC, // î
+    [_O_GRAVE_LOWER] = 0x00F2, // î
+    [_O_GRAVE_UPPER] = 0x00D2, // î
+    [_U_GRAVE_LOWER] = 0x00F9, // î
+    [_U_GRAVE_UPPER] = 0x00D9, // î
 };
 
-// Non-emoji
+// General purpose
 #define DASH XP(_EN_DASH, _EM_DASH)
 #define I_CIRC XP(_I_CIRCUMFLEX_LOWER, _I_CIRCUMFLEX_UPPER)
 
-// Emoji
-#define ALIEN X(_ALIEN)
-#define DISGUISE X(_DISGUISED_FACE)
-#define FIRE X(_FIRE)
-#define GOAT X(_GOAT)
-#define MOYAI X(_MOYAI)
-#define MID_FING X(_MIDDLE_FINGER)
-#define SKULL X(_SKULL)
-#define THINK_SAL XP(_THINKING, _SALUTE)
-#define THUMB XP(_THUMB_UP, _THUMB_DOWN)
+// Scottish Gaelic
+#define A_GRAVE XP(_A_GRAVE_LOWER, _A_GRAVE_UPPER)
+#define E_GRAVE XP(_E_GRAVE_LOWER, _E_GRAVE_UPPER)
+#define I_GRAVE XP(_I_GRAVE_LOWER, _I_GRAVE_UPPER)
+#define O_GRAVE XP(_O_GRAVE_LOWER, _O_GRAVE_UPPER)
+#define U_GRAVE XP(_U_GRAVE_LOWER, _U_GRAVE_UPPER)

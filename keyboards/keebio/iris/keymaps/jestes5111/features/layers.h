@@ -24,7 +24,7 @@ enum layers {
     _APP,
     _NUM,
     _SYM,
-    _UNI,
+    _SG,
     _SYS,
     _EXTRA,
 };
@@ -35,10 +35,10 @@ enum layers {
 #define SPC_SYM LT(_SYM, KC_SPC)
 #define E_SYM LT(_SYM, KC_E)
 #define TAB_SYS LT(_SYS, KC_TAB)
-#define DEL_UNI LT(_UNI, KC_DEL)
 
 // Short-hand names
 #define TYPING DF(_RSTHD)
 #define GAMING DF(_GAME)
 #define EXTRA MO(_EXTRA)
 #define SYMBOL MO(_SYM)
+#define SCOT_G MO(_SG)
