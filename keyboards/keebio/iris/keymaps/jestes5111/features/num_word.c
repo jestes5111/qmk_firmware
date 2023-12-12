@@ -57,7 +57,7 @@ bool process_num_word(uint16_t keycode, const keyrecord_t *record) {
         case SYMBOL:
         case SPC_SYM:
             return true;
-        case CANCEL:
+        case NW_OFF:
             if (record->event.pressed) {
                 disable_num_word();
             }

@@ -74,9 +74,9 @@ enum custom_keycodes {
     LYR_LOCK = SAFE_RANGE,
     UP_DIR,
     DOCSTRING,
-    NUMWORD,
     TODO,
-    CANCEL,
+    NW_ON,
+    NW_OFF,
 };
 
 bool process_macros(uint16_t keycode, const keyrecord_t *record);

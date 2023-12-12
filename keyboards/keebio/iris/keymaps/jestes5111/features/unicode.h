@@ -45,16 +45,16 @@ const uint32_t unicode_map[] PROGMEM = {
     [_I_CIRCUMFLEX_UPPER] = 0x00CE, // Î
 
     // Scottish Gaelic
-    [_A_GRAVE_LOWER] = 0x00E0, // î
-    [_A_GRAVE_UPPER] = 0x00C0, // î
-    [_E_GRAVE_LOWER] = 0x00E8, // î
-    [_E_GRAVE_UPPER] = 0x00C8, // î
-    [_I_GRAVE_LOWER] = 0x00EC, // î
-    [_I_GRAVE_UPPER] = 0x00CC, // î
-    [_O_GRAVE_LOWER] = 0x00F2, // î
-    [_O_GRAVE_UPPER] = 0x00D2, // î
-    [_U_GRAVE_LOWER] = 0x00F9, // î
-    [_U_GRAVE_UPPER] = 0x00D9, // î
+    [_A_GRAVE_LOWER] = 0x00E0, // à
+    [_A_GRAVE_UPPER] = 0x00C0, // À
+    [_E_GRAVE_LOWER] = 0x00E8, // è
+    [_E_GRAVE_UPPER] = 0x00C8, // È
+    [_I_GRAVE_LOWER] = 0x00EC, // ì
+    [_I_GRAVE_UPPER] = 0x00CC, // Ì
+    [_O_GRAVE_LOWER] = 0x00F2, // ò
+    [_O_GRAVE_UPPER] = 0x00D2, // Ò
+    [_U_GRAVE_LOWER] = 0x00F9, // ù
+    [_U_GRAVE_UPPER] = 0x00D9, // Ù
 };
 
 // General purpose

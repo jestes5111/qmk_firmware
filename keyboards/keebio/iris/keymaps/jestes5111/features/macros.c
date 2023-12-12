@@ -43,7 +43,7 @@ bool process_macros(uint16_t keycode, const keyrecord_t *record) {
                 SEND_STRING("TODO: ");
             }
             return false;
-        case NUMWORD:
+        case NW_ON:
             if (record->event.pressed) {
                 enable_num_word();
             }
