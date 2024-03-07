@@ -29,10 +29,7 @@ bool process_macros(uint16_t keycode, const keyrecord_t *record) {
             return false;
         case DOCSTRING:
             if (record->event.pressed) {
-                SEND_STRING("\"\"\"\"\"\"");
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
+                SEND_STRING("\"\"\"");
             }
             return false;
         case TODO:
