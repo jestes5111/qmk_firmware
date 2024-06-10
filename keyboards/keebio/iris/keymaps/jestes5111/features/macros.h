@@ -66,6 +66,7 @@
 #define CUT C(KC_X)
 #define COPY C(KC_C)
 #define PASTE C(KC_V)
+#define PASTE_PT LCAG(KC_V)
 #define UNDO C(KC_Z)
 #define REDO C(KC_Y)
 
