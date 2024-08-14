@@ -26,6 +26,7 @@ enum layers {
     _SYM,
     _SG,
     _SYS,
+    _CODE,
     _EXTRA,
 };
 
@@ -35,6 +36,7 @@ enum layers {
 #define SPC_SYM LT(_SYM, KC_SPC)
 #define E_SYM LT(_SYM, KC_E)
 #define TAB_SYS LT(_SYS, KC_TAB)
+#define DEL_CODE LT(_CODE, KC_DEL)
 
 // Short-hand names
 #define TYPING DF(_RSTHD)

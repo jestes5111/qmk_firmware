@@ -72,6 +72,10 @@
 #define PASTE_PT LCAG(KC_V)
 #define UNDO C(KC_Z)
 #define REDO C(KC_Y)
+#define RUN MEH(KC_F1)
+#define COMMENT C(KC_SLSH)
+#define TERM_TGL C(KC_GRV)
+#define TERM_DEL A(KC_D)
 
 // More complex macros
 enum custom_keycodes {

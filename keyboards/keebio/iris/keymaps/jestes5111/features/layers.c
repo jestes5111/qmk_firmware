@@ -39,6 +39,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         case _SYS:
             rgblight_sethsv_noeeprom(HSV_PURPLE);
             break;
+        case _CODE:
+            rgblight_sethsv_noeeprom(HSV_CORAL);
+            break;
         case _EXTRA:
             rgblight_sethsv_noeeprom(HSV_SPRINGGREEN);
             break;
