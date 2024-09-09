@@ -41,8 +41,6 @@ const uint32_t unicode_map[] PROGMEM = {
     // General purpose
     [_EN_DASH] = 0x2013, // –
     [_EM_DASH] = 0x2014, // —
-    [_I_CIRCUMFLEX_LOWER] = 0x00EE, // î
-    [_I_CIRCUMFLEX_UPPER] = 0x00CE, // Î
 
     // Scottish Gaelic
     [_A_GRAVE_LOWER] = 0x00E0, // à
@@ -59,7 +57,6 @@ const uint32_t unicode_map[] PROGMEM = {
 
 // General purpose
 #define DASH UP(_EN_DASH, _EM_DASH)
-#define I_CIRC UP(_I_CIRCUMFLEX_LOWER, _I_CIRCUMFLEX_UPPER)
 
 // Scottish Gaelic
 #define A_GRAVE UP(_A_GRAVE_LOWER, _A_GRAVE_UPPER)

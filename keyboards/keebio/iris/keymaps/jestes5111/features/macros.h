@@ -73,6 +73,7 @@
 #define UNDO C(KC_Z)
 #define REDO C(KC_Y)
 #define RUN MEH(KC_F1)
+#define SAVE C(KC_S)
 #define COMMENT C(KC_SLSH)
 #define TERM_TGL C(KC_GRV)
 #define TERM_DEL A(KC_D)

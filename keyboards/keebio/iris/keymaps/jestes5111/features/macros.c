@@ -22,9 +22,8 @@
 
 // Key overrides
 const key_override_t paste_as_plain_text_override = ko_make_basic(MOD_MASK_SHIFT, PASTE, PASTE_PT);
-const key_override_t **key_overrides = (const key_override_t *[]) {
-    &paste_as_plain_text_override,
-    NULL
+const key_override_t *key_overrides[] = {
+    &paste_as_plain_text_override
 };
 
 bool process_macros(uint16_t keycode, const keyrecord_t *record) {

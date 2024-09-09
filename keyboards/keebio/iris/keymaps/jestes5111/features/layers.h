@@ -43,4 +43,4 @@ enum layers {
 #define GAMING DF(_GAME)
 #define EXTRA MO(_EXTRA)
 #define SYMBOL MO(_SYM)
-#define SCOT_G OSL(_SG)
+#define GAIDHLIG OSL(_SG)

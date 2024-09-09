@@ -15,8 +15,10 @@
 
 SRC += features/layer_lock.c
 SRC += features/layers.c
-SRC += features/macros.c
 SRC += features/num_word.c
+
+# Allow macros to be stored outside of `keymap.c`
+INTROSPECTION_KEYMAP_C = features/macros.c
 
 CAPS_WORD_ENABLE = yes
 NKRO_ENABLE = yes
