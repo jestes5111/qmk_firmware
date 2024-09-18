@@ -75,8 +75,7 @@
 #define RUN MEH(KC_F1)
 #define SAVE C(KC_S)
 #define COMMENT C(KC_SLSH)
-#define TERM_TGL C(KC_GRV)
-#define TERM_DEL A(KC_D)
+#define TERMINAL LCA(KC_T)
 
 // More complex macros
 enum custom_keycodes {
