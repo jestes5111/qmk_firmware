@@ -41,6 +41,7 @@ enum layers {
 // Short-hand names
 #define TYPING DF(_RSTHD)
 #define GAMING DF(_GAME)
+#define NUMPAD MO(_NUM)
 #define EXTRA MO(_EXTRA)
 #define SYMBOL MO(_SYM)
 #define GAIDHLIG OSL(_SG)
