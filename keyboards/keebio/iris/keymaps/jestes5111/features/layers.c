@@ -18,6 +18,7 @@
 #include QMK_KEYBOARD_H
 
 #include "layers.h"
+#include "socd_cleaner.h"
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
@@ -50,10 +51,12 @@ layer_state_t layer_state_set_user(layer_state_t state) {
                 case _RSTHD:
                     rgblight_sethsv_noeeprom(HSV_OFF);
                     keymap_config.nkro = false;
+                    socd_cleaner_enabled = false;
                     break;
                 case _GAME:
                     rgblight_sethsv_noeeprom(HSV_BLUE);
                     keymap_config.nkro = true;
+                    socd_cleaner_enabled = true;
                     break;
             }
     }

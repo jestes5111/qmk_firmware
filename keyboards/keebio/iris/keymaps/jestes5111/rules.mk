@@ -13,10 +13,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-SRC += features/layer_lock.c
 SRC += features/layers.c
-SRC += features/num_word.c
+SRC += features/layer_lock.c
 SRC += features/mod_taps.c
+SRC += features/num_word.c
+SRC += features/socd_cleaner.c
 
 # Allow macros to be stored outside of `keymap.c`
 INTROSPECTION_KEYMAP_C = features/macros.c
