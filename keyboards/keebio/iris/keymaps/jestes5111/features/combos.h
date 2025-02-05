@@ -15,31 +15,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include QMK_KEYBOARD_H
 
-enum layers {
-    _RSTHD = 0,
-    _GAME,
-    _NAV,
-    _APP,
-    _NUM,
-    _SYM,
-    _SYS,
-    _CODE,
-    _EXTRA,
+#include "layers.h"
+#include "macros.h"
+#include "unicode.h"
+
+const uint16_t PROGMEM a_grave[] = {KC_GRV, A_CTL, COMBO_END};
+const uint16_t PROGMEM e_grave[] = {KC_GRV, E_SYM, COMBO_END};
+const uint16_t PROGMEM i_grave[] = {KC_GRV, I_ALT, COMBO_END};
+const uint16_t PROGMEM o_grave[] = {KC_GRV, O_GUI, COMBO_END};
+const uint16_t PROGMEM u_grave[] = {KC_GRV, KC_U, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(a_grave, A_GRAVE),
+    COMBO(e_grave, E_GRAVE),
+    COMBO(i_grave, I_GRAVE),
+    COMBO(o_grave, O_GRAVE),
+    COMBO(u_grave, U_GRAVE),
 };
-
-// Layer taps
-#define BSPC_NAV LT(_NAV, KC_BSPC)
-#define ENT_APP LT(_APP, KC_ENT)
-#define SPC_SYM LT(_SYM, KC_SPC)
-#define E_SYM LT(_SYM, KC_E)
-#define TAB_SYS LT(_SYS, KC_TAB)
-#define DEL_CODE LT(_CODE, KC_DEL)
-
-// Short-hand names
-#define TYPING DF(_RSTHD)
-#define GAMING DF(_GAME)
-#define NUMPAD MO(_NUM)
-#define EXTRA MO(_EXTRA)
-#define SYMBOL MO(_SYM)

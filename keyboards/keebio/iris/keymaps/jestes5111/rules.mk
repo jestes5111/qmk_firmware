@@ -23,6 +23,7 @@ SRC += features/socd_cleaner.c
 INTROSPECTION_KEYMAP_C = features/macros.c
 
 CAPS_WORD_ENABLE = yes
+COMBO_ENABLE = yes
 NKRO_ENABLE = yes
 UNICODEMAP_ENABLE = yes
 
