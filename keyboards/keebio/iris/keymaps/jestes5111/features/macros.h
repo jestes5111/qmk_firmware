@@ -31,9 +31,6 @@
 #define OS_LSFT OSM(MOD_LSFT)
 #define OS_RSFT OSM(MOD_RSFT)
 
-// Vim shortcuts
-#define SFT_G S(KC_G)
-
 // Windows shortcuts
 #define TB_1 G(KC_1)
 #define TB_2 G(KC_2)
@@ -73,18 +70,19 @@
 #define UNDO C(KC_Z)
 #define REDO C(KC_Y)
 #define RUN MEH(KC_F1)
-#define SAVE C(KC_S)
 #define COMMENT C(KC_SLSH)
 #define TERMINAL LCA(KC_T)
 
 // More complex macros
 enum custom_keycodes {
     LYR_LOCK = SAFE_RANGE,
+    NW_ON,
+    NW_OFF,
     UP_DIR,
     DOCSTRING,
     TODO,
-    NW_ON,
-    NW_OFF,
+    OPEN_TAG,
+    CLOSE_TAG,
 };
 
 bool process_macros(uint16_t keycode, const keyrecord_t *record);

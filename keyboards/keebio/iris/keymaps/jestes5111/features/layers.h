@@ -42,4 +42,3 @@ enum layers {
 #define GAMING DF(_GAME)
 #define NUMPAD MO(_NUM)
 #define EXTRA MO(_EXTRA)
-#define SYMBOL MO(_SYM)

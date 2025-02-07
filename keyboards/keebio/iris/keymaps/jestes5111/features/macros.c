@@ -22,12 +22,23 @@
 
 // Key overrides
 const key_override_t paste_as_plain_text_override = ko_make_basic(MOD_MASK_SHIFT, PASTE, PASTE_PT);
+const key_override_t question_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_QUES);
+const key_override_t exclamation_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_EXLM);
+const key_override_t backslash_override = ko_make_basic(MOD_MASK_SHIFT, KC_SLSH, KC_BSLS);
 const key_override_t *key_overrides[] = {
-    &paste_as_plain_text_override
+    &paste_as_plain_text_override,
+    &question_override,
+    &exclamation_override,
+    &backslash_override
 };
 
 bool process_macros(uint16_t keycode, const keyrecord_t *record) {
     switch (keycode) {
+        case NW_ON:
+            if (record->event.pressed) {
+                enable_num_word();
+            }
+            return false;
         case UP_DIR:
             if (record->event.pressed) {
                 SEND_STRING("../");
@@ -46,9 +57,16 @@ bool process_macros(uint16_t keycode, const keyrecord_t *record) {
                 SEND_STRING("TODO: ");
             }
             return false;
-        case NW_ON:
+        case OPEN_TAG:
             if (record->event.pressed) {
-                enable_num_word();
+                SEND_STRING("<>");
+                tap_code(KC_LEFT);
+            }
+            return false;
+        case CLOSE_TAG:
+            if (record->event.pressed) {
+                SEND_STRING("</>");
+                tap_code(KC_LEFT);
             }
             return false;
     }
