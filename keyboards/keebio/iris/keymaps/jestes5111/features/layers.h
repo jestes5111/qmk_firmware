@@ -29,7 +29,7 @@ enum layers {
     _EXTRA,
 };
 
-// Layer taps
+// RSTHD layer-taps
 #define BSPC_NAV LT(_NAV, KC_BSPC)
 #define ENT_APP LT(_APP, KC_ENT)
 #define SPC_SYM LT(_SYM, KC_SPC)
@@ -37,8 +37,9 @@ enum layers {
 #define TAB_SYS LT(_SYS, KC_TAB)
 #define DEL_CODE LT(_CODE, KC_DEL)
 
+// Gaming layer-taps
+#define ENT_EXT LT(_EXTRA, KC_ENT)
+
 // Short-hand names
 #define TYPING DF(_RSTHD)
 #define GAMING DF(_GAME)
-#define NUMPAD MO(_NUM)
-#define EXTRA MO(_EXTRA)
