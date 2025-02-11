@@ -1,5 +1,4 @@
-/**
- * Copyright 2023 Jesse Estes (@jestes5111)
+/* Copyright 2021 Joshua T.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,28 +16,39 @@
 
 #include "num_word.h"
 
-static bool _num_word_enabled = false;
+static uint16_t num_word_timer = 0;
+static bool is_num_word_on = false;
 
-bool num_word_enabled(void) {
-    return _num_word_enabled;
+bool is_num_word_enabled(void) {
+    return is_num_word_on;
 }
 
 void enable_num_word(void) {
-    _num_word_enabled = true;
+    if (is_num_word_on) return;
+    is_num_word_on = true;
     layer_on(_NUM);
 }
 
 void disable_num_word(void) {
-    _num_word_enabled = false;
+    if (!is_num_word_on) return;
+    is_num_word_on = false;
     layer_off(_NUM);
 }
 
-bool process_num_word(uint16_t keycode, const keyrecord_t *record) {
-    if (!_num_word_enabled) {
-        return true;
+void toggle_num_word(void) {
+    if (is_num_word_on) {
+        disable_num_word();
+    } else {
+        enable_num_word();
     }
+}
 
+bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
     switch (keycode) {
+        // Keycodes which should not disable num word mode.
+        // We could probably be more brief with these definitions by using
+        // a couple more ranges, but I believe "explicit is better than
+        // implicit"
         case KC_NO:
         case KC_1 ... KC_0:
         case KC_QUES:
@@ -62,16 +72,56 @@ bool process_num_word(uint16_t keycode, const keyrecord_t *record) {
         case KC_BSPC:
         case KC_ENT:
         case KC_DEL:
-            return true;
-        case NW_OFF:
-            if (record->event.pressed) {
-                disable_num_word();
-            }
+        case LYR_LOCK:
             return false;
         default:
             if (record->event.pressed) {
-                disable_num_word();
+                return true;
             }
-            return true;
+            return false;
     }
+
+    // Should be unreachable
+    return false;
+}
+
+
+bool process_num_word(uint16_t keycode, keyrecord_t *record) {
+    // Handle the custom keycodes that go with this feature
+    if (keycode == NW_ON) {
+        if (record->event.pressed) {
+            enable_num_word();
+            num_word_timer = timer_read();
+            return false;
+        }
+        else {
+            if (timer_elapsed(num_word_timer) > TAPPING_TERM) {
+                // If the user held the key longer than TAPPING_TERM,
+                // consider it a hold, and disable the behavior on
+                // key release.
+                disable_num_word();
+                return false;
+            }
+        }
+    } else if (keycode == KC_SPC) {
+        tap_code(keycode);
+    }
+
+    // Other than the custom keycodes, nothing else in this feature will
+    // activate if the behavior is not on, so allow QMK to handle the
+    // event as usual
+    if (!is_num_word_on) {
+        return true;
+    }
+
+    // Nothing else acts on key release, either
+    if (!record->event.pressed) {
+        return true;
+    }
+
+    if (should_terminate_num_word(keycode, record)) {
+        disable_num_word();
+    }
+
+    return true;
 }

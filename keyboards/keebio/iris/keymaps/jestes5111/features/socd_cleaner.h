@@ -131,6 +131,8 @@ typedef struct {
  * more than one SOCD key pair.
  */
 bool process_socd_cleaner(uint16_t keycode, keyrecord_t* record, socd_cleaner_t* state);
+socd_cleaner_t socd_v;
+socd_cleaner_t socd_h;
 
 /** Determines globally whether SOCD cleaner is enabled. */
 extern bool socd_cleaner_enabled;

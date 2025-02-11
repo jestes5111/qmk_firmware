@@ -80,3 +80,6 @@ bool process_socd_cleaner(uint16_t keycode, keyrecord_t* record,
   }
   return true;  // Continue default handling to press/release current key.
 }
+
+socd_cleaner_t socd_v = {{KC_W, KC_S}, SOCD_CLEANER_LAST};
+socd_cleaner_t socd_h = {{KC_A, KC_D}, SOCD_CLEANER_LAST};
