@@ -1,4 +1,5 @@
-/* Copyright 2021 Joshua T.
+/**
+ * Copyright 2025 Jesse Estes (@jestes5111)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,10 +46,6 @@ void toggle_num_word(void) {
 
 bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
     switch (keycode) {
-        // Keycodes which should not disable num word mode.
-        // We could probably be more brief with these definitions by using
-        // a couple more ranges, but I believe "explicit is better than
-        // implicit"
         case KC_NO:
         case KC_1 ... KC_0:
         case KC_QUES:
@@ -87,14 +84,12 @@ bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
 
 
 bool process_num_word(uint16_t keycode, keyrecord_t *record) {
-    // Handle the custom keycodes that go with this feature
     if (keycode == NW_ON) {
         if (record->event.pressed) {
             enable_num_word();
             num_word_timer = timer_read();
             return false;
-        }
-        else {
+        } else {
             if (timer_elapsed(num_word_timer) > TAPPING_TERM) {
                 // If the user held the key longer than TAPPING_TERM,
                 // consider it a hold, and disable the behavior on
@@ -103,12 +98,14 @@ bool process_num_word(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
         }
-    } else if (keycode == KC_SPC) {
+    }
+
+    if (keycode == KC_SPC) {
         tap_code(keycode);
     }
 
-    // Other than the custom keycodes, nothing else in this feature will
-    // activate if the behavior is not on, so allow QMK to handle the
+    // Other than the custom keycodes and space, nothing else in this feature
+    // will activate if the behavior is not on, so allow QMK to handle the
     // event as usual
     if (!is_num_word_on) {
         return true;

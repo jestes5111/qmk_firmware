@@ -1,5 +1,5 @@
 /**
- * Copyright 2023 Jesse Estes (@jestes5111)
+ * Copyright 2025 Jesse Estes (@jestes5111)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,6 +16,8 @@
  */
 
 #pragma once
+
+#include "num_word.h"
 
 // Home-row mods
 #define R_GUI LGUI_T(KC_R)

@@ -18,7 +18,6 @@
 #include QMK_KEYBOARD_H
 
 #include "macros.h"
-#include "num_word.h"
 
 // Key overrides
 const key_override_t paste_as_plain_text_override = ko_make_basic(MOD_MASK_SHIFT, PASTE, PASTE_PT);
