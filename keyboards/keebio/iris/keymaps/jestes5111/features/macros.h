@@ -62,16 +62,13 @@
 #define COPY C(KC_C)
 #define PASTE C(KC_V)
 #define PASTE_PT LCAG(KC_V)
-#define UNDO C(KC_Z)
-#define REDO C(KC_Y)
 #define RUN MEH(KC_F1)
 #define COMMENT C(KC_SLSH)
 #define TERMINAL LCA(KC_T)
 
 // More complex macros
 enum custom_keycodes {
-    LYR_LOCK = SAFE_RANGE,
-    NW_ON,
+    NW_ON = SAFE_RANGE,
     NW_OFF,
     UP_DIR,
     DOCSTRING,

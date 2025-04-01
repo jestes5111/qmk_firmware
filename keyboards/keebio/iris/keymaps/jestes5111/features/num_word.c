@@ -48,17 +48,14 @@ bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
     switch (keycode) {
         case KC_NO:
         case KC_1 ... KC_0:
-        case KC_QUES:
         case KC_LABK:
         case KC_RABK:
-        case KC_AT:
         case KC_CIRC:
         case KC_EXLM:
         case KC_MINS:
         case KC_PLUS:
         case KC_EQL:
         case KC_HASH:
-        case KC_UNDS:
         case KC_SLSH:
         case KC_ASTR:
         case KC_BSLS:
@@ -67,10 +64,26 @@ bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
         case KC_DOT:
         case KC_COMM:
         case KC_TAB:
-        case KC_BSPC:
         case KC_ENT:
         case KC_DEL:
-        case LYR_LOCK:
+        case E_SYM:
+        case SPC_SYM:
+        case KC_TILD:
+        case KC_LBRC:
+        case KC_RBRC:
+        case KC_AMPR:
+        case KC_LPRN:
+        case KC_RPRN:
+        case KC_DQUO:
+        case KC_DLR:
+        case KC_LCBR:
+        case KC_RCBR:
+        case KC_QUOT:
+        case BSPC_NAV:
+        case KC_LEFT:
+        case KC_DOWN:
+        case KC_UP:
+        case KC_RGHT:
             return false;
         default:
             if (record->event.pressed) {

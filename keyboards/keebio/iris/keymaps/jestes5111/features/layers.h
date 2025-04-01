@@ -20,9 +20,9 @@
 enum layers {
     _RSTHD = 0,
     _GAME,
+    _NUM,
     _NAV,
     _APP,
-    _NUM,
     _SYM,
     _SYS,
     _CODE,

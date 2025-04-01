@@ -14,7 +14,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 SRC += features/layers.c
-SRC += features/layer_lock.c
 SRC += features/mod_taps.c
 SRC += features/num_word.c
 SRC += features/socd_cleaner.c
@@ -26,6 +25,7 @@ CAPS_WORD_ENABLE = yes
 COMBO_ENABLE = yes
 NKRO_ENABLE = yes
 UNICODEMAP_ENABLE = yes
+LAYER_LOCK_ENABLE = yes
 
 # Saving space
 BACKLIGHT_ENABLE = no
