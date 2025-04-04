@@ -24,15 +24,13 @@ const key_override_t paste_as_plain_text_override = ko_make_basic(MOD_MASK_SHIFT
 const key_override_t question_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_QUES);
 const key_override_t exclamation_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_EXLM);
 const key_override_t backslash_override = ko_make_basic(MOD_MASK_SHIFT, KC_SLSH, KC_BSLS);
-const key_override_t next_track_override = ko_make_basic(MOD_MASK_SHIFT, KC_MPLY, KC_MNXT);
-const key_override_t previous_track_override = ko_make_basic(MOD_MASK_CTRL, KC_MPLY, KC_MPRV);
+const key_override_t pipe_override = ko_make_basic(MOD_MASK_SHIFT, KC_AMPR, KC_PIPE);
 const key_override_t *key_overrides[] = {
     &paste_as_plain_text_override,
     &question_override,
     &exclamation_override,
     &backslash_override,
-    &next_track_override,
-    &previous_track_override
+    &pipe_override
 };
 
 bool process_macros(uint16_t keycode, const keyrecord_t *record) {
@@ -45,19 +43,6 @@ bool process_macros(uint16_t keycode, const keyrecord_t *record) {
         case UP_DIR:
             if (record->event.pressed) {
                 SEND_STRING("../");
-            }
-            return false;
-        case DOCSTRING:
-            if (record->event.pressed) {
-                SEND_STRING("\"\"\"");
-            }
-            return false;
-        case TODO:
-            if (record->event.pressed) {
-                register_code(KC_LCTL);
-                tap_code(KC_SLSH);
-                unregister_code(KC_LCTL);
-                SEND_STRING("TODO: ");
             }
             return false;
         case OPEN_TAG:

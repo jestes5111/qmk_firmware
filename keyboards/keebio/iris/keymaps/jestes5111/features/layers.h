@@ -25,17 +25,15 @@ enum layers {
     _APP,
     _SYM,
     _SYS,
-    _CODE,
+    _FN,
     _EXTRA,
 };
 
-// RSTHD layer-taps
-#define BSPC_NAV LT(_NAV, KC_BSPC)
+// Typing layer-taps
+#define TAB_NAV LT(_NAV, KC_TAB)
 #define ENT_APP LT(_APP, KC_ENT)
 #define SPC_SYM LT(_SYM, KC_SPC)
 #define E_SYM LT(_SYM, KC_E)
-#define TAB_SYS LT(_SYS, KC_TAB)
-#define DEL_CODE LT(_CODE, KC_DEL)
 
 // Gaming layer-taps
 #define ENT_EXT LT(_EXTRA, KC_ENT)
@@ -43,3 +41,5 @@ enum layers {
 // Short-hand names
 #define TYPING DF(_RSTHD)
 #define GAMING DF(_GAME)
+#define SYS MO(_SYS)
+#define FN TG(_FN)

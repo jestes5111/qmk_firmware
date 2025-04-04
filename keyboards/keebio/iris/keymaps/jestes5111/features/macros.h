@@ -63,7 +63,6 @@
 #define PASTE C(KC_V)
 #define PASTE_PT LCAG(KC_V)
 #define RUN MEH(KC_F1)
-#define COMMENT C(KC_SLSH)
 #define TERMINAL LCA(KC_T)
 
 // More complex macros
@@ -71,8 +70,6 @@ enum custom_keycodes {
     NW_ON = SAFE_RANGE,
     NW_OFF,
     UP_DIR,
-    DOCSTRING,
-    TODO,
     OPEN_TAG,
     CLOSE_TAG,
 };
