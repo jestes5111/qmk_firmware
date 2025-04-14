@@ -68,7 +68,6 @@ bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
         case KC_TAB:
         case KC_ENT:
         case E_SYM:
-        case SPC_SYM:
         case KC_TILD:
         case KC_LBRC:
         case KC_RBRC:
