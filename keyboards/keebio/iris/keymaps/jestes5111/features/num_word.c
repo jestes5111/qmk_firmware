@@ -18,6 +18,7 @@
 #include "num_word.h"
 
 static uint16_t num_word_timer = 0;
+// static uint16_t spc_sym_timer = 0;
 static bool is_num_word_on = false;
 
 bool is_num_word_enabled(void) {
@@ -50,6 +51,7 @@ bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
         case KC_1 ... KC_0:
         case KC_LABK:
         case KC_RABK:
+        case KC_AT:
         case KC_CIRC:
         case KC_BSPC:
         case KC_EXLM:
@@ -57,6 +59,7 @@ bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
         case KC_PLUS:
         case KC_EQL:
         case KC_HASH:
+        case KC_QUES:
         case KC_SLSH:
         case KC_ASTR:
         case KC_BSLS:
@@ -85,8 +88,15 @@ bool should_terminate_num_word(uint16_t keycode, const keyrecord_t *record) {
         case KC_UP:
         case KC_RGHT:
             return false;
+
+        case SPC_SYM:
+            if (record->event.pressed && record->tap.count != 0) {
+                return true;
+            }
+            return false;
+
         default:
-            if (record->event.pressed) {
+            if (record->event.pressed && layer_state_is(_SYM)) {
                 return true;
             }
             return false;
@@ -106,16 +116,11 @@ bool process_num_word(uint16_t keycode, keyrecord_t *record) {
         } else {
             if (timer_elapsed(num_word_timer) > TAPPING_TERM) {
                 // If the user held the key longer than TAPPING_TERM,
-                // consider it a hold, and disable the behavior on
-                // key release.
+                // consider it a hold, and disable the behavior on key release.
                 disable_num_word();
                 return false;
             }
         }
-    }
-
-    if (keycode == KC_SPC) {
-        tap_code(keycode);
     }
 
     // Other than the custom keycodes and space, nothing else in this feature
