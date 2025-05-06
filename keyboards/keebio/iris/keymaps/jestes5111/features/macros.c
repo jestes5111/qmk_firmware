@@ -40,6 +40,11 @@ bool process_macros(uint16_t keycode, const keyrecord_t *record) {
                 enable_num_word();
             }
             return false;
+        case NW_OFF:
+            if (record->event.pressed) {
+                disable_num_word();
+            }
+            return false;
         case UP_DIR:
             if (record->event.pressed) {
                 SEND_STRING("../");
