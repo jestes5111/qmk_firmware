@@ -33,7 +33,9 @@ const key_override_t *key_overrides[] = {
     &pipe_override
 };
 
+uint8_t mod_state;
 bool process_macros(uint16_t keycode, const keyrecord_t *record) {
+    mod_state = get_mods();
     switch (keycode) {
         case NW_ON:
             if (record->event.pressed) {
@@ -60,6 +62,25 @@ bool process_macros(uint16_t keycode, const keyrecord_t *record) {
             if (record->event.pressed) {
                 SEND_STRING("</>");
                 tap_code(KC_LEFT);
+            }
+            return false;
+        case CW_EXT:
+            if (record->event.pressed) {
+                if (mod_state & MOD_MASK_SHIFT) {
+                    if (is_caps_word_on()) {
+                        // Prevent odd behavior by ensuring Caps Word is off
+                        caps_word_off();
+                    }
+                    tap_code(KC_CAPS);
+                } else {
+                    if (host_keyboard_led_state().caps_lock) {
+                        // Turn off Caps Lock
+                        tap_code(KC_CAPS);
+                        // Prevent next word from being capitalized
+                        caps_word_toggle();
+                    }
+                    caps_word_toggle();
+                }
             }
             return false;
     }

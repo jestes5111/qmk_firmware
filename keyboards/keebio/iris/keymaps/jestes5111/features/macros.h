@@ -72,6 +72,7 @@ enum custom_keycodes {
     UP_DIR,
     OPEN_TAG,
     CLOSE_TAG,
+    CW_EXT,
 };
 
 bool process_macros(uint16_t keycode, const keyrecord_t *record);
